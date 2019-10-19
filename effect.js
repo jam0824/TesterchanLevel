@@ -144,6 +144,7 @@ phina.define('FadeOut', {
         }
         else{
             //this.remove();
+            SoundManager.stopMusic();
             main_obj.exit();
         }
     },

@@ -4,6 +4,7 @@ phina.define('Opening', {
     superClass: 'DisplayScene',
     init: function(option) {
         this.superInit(option);
+        if(is_sound) SoundManager.playMusic("opening_bgm");
         var sprite_bg = make_sprite(this, 'opening_bg', 0, 0);
         var sprite = OpeningJump().addChildTo(this);
         sprite.x = this.gridX.center(2);
@@ -21,6 +22,7 @@ function make_opening_button(obj, grid_y){
     select.y = obj.gridY.center(grid_y);
     select.setInteractive(true);
     select.onpointend = function(e){
+        if(is_sound) SoundManager.play('opening_decision');
         select.setImage('opening_button02');
         make_hit(obj, Number(e.pointer.x), Number(e.pointer.y));
         var fadeout = fade(obj, 'black', 0.1)

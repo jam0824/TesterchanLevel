@@ -3,6 +3,7 @@ phina.define('Result', {
     superClass: 'DisplayScene',
     init: function(option) {
         this.superInit(option);
+        if(is_sound) SoundManager.playMusic("result_bgm");
         this.backgroundColor = 'white';
         var sprite_bg = make_bg(this, 'result_bg', 0, 0, 0.05);
         var fade = make_result_fade_in(this, 'white', 0.05);
@@ -14,7 +15,7 @@ phina.define('Result', {
 
         is_clear = (correct_num >= CLEAR_QUESTION_NUMBER) ? true : false;
         setTimeout(judge, 5000, this, is_clear);
-        
+
         main_obj = this;
     },
 });
@@ -32,6 +33,7 @@ function make_small_number(obj, num, x, y, w){
     var id = setInterval(function(){
         var c = text.charAt(index);
         var sprite = SmallNum(c, 0.1).addChildTo(obj);
+        if(is_sound) SoundManager.play('result_bishi');
         sprite.x = x - (index * w);
         sprite.y = y;
         index++;
@@ -47,6 +49,7 @@ function make_large_number(obj, result_text, x, w, grid_y){
     var id = setInterval(function(){
         var c = text.charAt(index);
         var sprite = LargeNum(c, 0.25).addChildTo(obj);
+        if(is_sound) SoundManager.play('result_don');
         sprite.x = x - (index * w);
         sprite.y = obj.gridY.center(grid_y);
         index++;
@@ -70,11 +73,13 @@ function make_goukaku(obj, x, w, grid_y){
     var list_char = ['gou', 'kaku'];
     var id = setInterval(function(){
         var sprite = LargeNum(list_char[index], 0.25).addChildTo(obj);
+        if(is_sound) SoundManager.play('result_goukaku');
         sprite.x = x + (index * w);
         sprite.y = obj.gridY.center(grid_y);
         index++;
         if(index >= list_char.length){
             make_next_button(obj, obj.gridX.center(), 1250);
+            if(is_sound) SoundManager.play('result_fanfare');
             clearInterval(id);
         }
     }, 1000);
@@ -82,6 +87,8 @@ function make_goukaku(obj, x, w, grid_y){
 
 function make_fugoukaku(obj, grid_y){
     var sprite = LargeNum('fugoukaku', 0.25).addChildTo(obj);
+    if(is_sound) SoundManager.play('result_goukaku');
+    if(is_sound) SoundManager.play('result_fate');
     sprite.x = obj.gridX.center();
     sprite.y = obj.gridY.center(grid_y);
     make_next_button(obj, obj.gridX.center(), 1250);
@@ -97,6 +104,7 @@ function make_next_button(obj, x, y){
     button.y = y;
     button.setInteractive(true);
     button.onpointend = function(e){
+        if(is_sound) SoundManager.play('opening_decision');
         button.setImage('next_button02');
         make_hit(obj, Number(e.pointer.x), Number(e.pointer.y));
         var fadeout = fade(obj, 'black', 0.1)

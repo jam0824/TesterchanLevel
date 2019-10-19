@@ -44,6 +44,22 @@ var ASSETS = {
       'top_button02':'src/asset/button_top02.png',
       'check_button01':'src/asset/button_check01.png',
     },
+    sound:{
+        'opening_bgm':'src/bgm/opening_bgm.mp3',
+        'story_bgm':'src/bgm/story_bgm.mp3',
+        'quiz_bgm':'src/bgm/quiz_bgm.mp3',
+        'result_bgm':'src/bgm/result_bgm.ogg',
+        'opening_decision':'src/se/opening_decision.ogg',
+        'story_msg':'src/se/story_msg.mp3',
+        'quiz_select':'src/se/quiz_select.mp3',
+        'quiz_correct':'src/se/quiz_correct.mp3',
+        'quiz_wrong':'src/se/quiz_wrong.mp3',
+        'result_goukaku':'src/se/result_goukaku.mp3',
+        'result_don':'src/se/result_don.mp3',
+        'result_bishi':'src/se/result_bishi.mp3',
+        'result_fanfare':'src/se/result_fanfare.mp3',
+        'result_fate':'src/se/result_fate.mp3',
+    },
     spritesheet: {
         "hit_ss":
         {

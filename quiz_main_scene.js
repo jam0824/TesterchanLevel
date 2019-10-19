@@ -7,6 +7,7 @@ phina.define('QuizMain', {
     superClass: 'DisplayScene',
     init: function(option) {
       this.superInit(option);
+      if(is_sound) SoundManager.playMusic("quiz_bgm");
       start_time = Date.now();
       list_finished_question = [];
       question_number = 0;
@@ -117,6 +118,7 @@ function make_black(obj, w, h, a, grid_x, grid_y){
     select.setInteractive(true);
     select.onpointend = function(e){
       if(is_tap_ok){
+        if(is_sound) SoundManager.play('quiz_select');
         is_tap_ok = false;
         select.setImage('select02');
         onclick_event(obj, group, is_correct, origin_question, Number(e.pointer.x), Number(e.pointer.y));
@@ -138,12 +140,14 @@ function make_black(obj, w, h, a, grid_x, grid_y){
   //正解不正解エフェクト
   function after_onclick_event(obj, group, is_correct, origin_question){
     if(is_correct){
+        if(is_sound) SoundManager.play('quiz_correct');
       correct_num++;
       origin_question['result'] = true;
       console.log("正解！！");
       make_correct(obj);
     }
     else{
+        if(is_sound) SoundManager.play('quiz_wrong');
       wrong_num++;
       origin_question['result'] = false;
       console.log("まちがい……");
