@@ -143,8 +143,29 @@ phina.define('FadeOut', {
         this.alpha += this.inclease_alpha;
         }
         else{
-            this.remove();
+            //this.remove();
             main_obj.exit();
+        }
+    },
+});
+
+phina.define('FadeIn', {
+    superClass: 'RectangleShape',
+    init: function(inclease_alpha, fill_color) {
+        this.superInit();
+        this.width = SCREEN_WIDTH;
+        this.height = SCREEN_HEIGHT;
+        this.fill = fill_color;
+        this.alpha = 1;
+        this.inclease_alpha = inclease_alpha;
+    },
+    // 毎フレーム処理
+    update: function() {
+        if(this.alpha > 0){
+            this.alpha -= this.inclease_alpha;
+            if(this.alpha <= 0.1){
+                this.remove();
+            }
         }
     },
 });
@@ -161,6 +182,38 @@ phina.define('OpeningJump', {
         if(this.x > 350){
             this.x -= 0.1;
             this.y -= 0.1;
+        }
+    },
+});
+
+
+//キャラクラス
+phina.define('Charactor', {
+    superClass: 'Sprite',
+    init: function(file_name, inclease_alpha) {
+      this.superInit(file_name);
+      this.cnt = 0;
+      this.is_fadein = true;
+      this.is_fadeout = false;
+      this.inclease_alpha = inclease_alpha;
+      this.alpha = 0;
+    },
+    // 毎フレーム処理
+    update: function() {
+        if(this.is_fadein){
+            this.alpha += this.inclease_alpha;
+            if(this.alpha >= 1){
+                this.alpha = 1;
+                this.is_fadein = false;
+            }
+        }
+        if(this.is_fadeout){
+            this.alpha -= this.inclease_alpha;
+            if(this.alpha <= 0){
+                this.alpha = 0;
+                this.is_fadeout = false;
+                this.remove();
+            }
         }
     },
 });

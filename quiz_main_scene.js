@@ -190,16 +190,7 @@ function make_black(obj, w, h, a, grid_x, grid_y){
     sprite.y = obj.gridY.center();
   }
   
-  //汎用配列並び替えメソッド
-  function sort_array(list_shuffle){
-    for(var i = list_shuffle.length - 1; i > 0; i--){
-      var r = Math.floor(Math.random() * (i + 1));
-      var tmp = list_shuffle[i];
-      list_shuffle[i] = list_shuffle[r];
-      list_shuffle[r] = tmp;
-    } 
-    return list_shuffle;
-  }
+
   
 
   

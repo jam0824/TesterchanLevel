@@ -17,6 +17,10 @@ var ASSETS = {
       'opening_button01':'src/asset/button_start01.png',
       'opening_button02':'src/asset/button_start02.png',
       'opening_jump':'src/asset/openning_jump.png',
+      'skip_button01':'src/asset/button_skip01.png',
+      'skip_button02':'src/asset/button_skip02.png',
+      'story_window':'src/asset/scenario_wnd.png',
+      'rin_normal':'src/asset/rin_normal.png',
     },
     spritesheet: {
         "hit_ss":

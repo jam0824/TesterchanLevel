@@ -18,16 +18,22 @@ phina.main(function() {
     assets: ASSETS,
     width: SCREEN_WIDTH,
     height: SCREEN_HEIGHT,
+    fill:'black',
     scenes: [
       {
         className: 'Opening',
         label: 'opening',
+        nextLabel: 'story',
+      },
+      {
+        className: 'Story',
+        label: 'story',
         nextLabel: 'quiz_main',
       },
       {
         className: 'QuizMain',
         label: 'quiz_main',
-        nextLabel: 'quiz_main',
+        nextLabel: 'opening',
       },
     ]
   });
