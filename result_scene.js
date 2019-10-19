@@ -5,7 +5,7 @@ phina.define('Result', {
         this.superInit(option);
         this.backgroundColor = 'white';
         var sprite_bg = make_bg(this, 'result_bg', 0, 0, 0.05);
-        var fade = make_result_fade_in(this);
+        var fade = make_result_fade_in(this, 'white', 0.05);
         char = make_charactor(this, 'char',this.gridX.center(), 1100, 0.1);
         make_small_number(this, 26, 265, 275, 90);
         setTimeout(make_large_number, 2000, this, "39/40", 660, 140, -1);
@@ -14,8 +14,8 @@ phina.define('Result', {
     },
 });
 
-function make_result_fade_in(obj){
-    var sprite = FadeIn(0.05, 'white').addChildTo(obj);
+function make_result_fade_in(obj, fill_color, alpha){
+    var sprite = FadeIn(alpha, fill_color).addChildTo(obj);
     sprite.x = obj.gridX.center();
     sprite.y = obj.gridY.center();
     return sprite;
@@ -69,7 +69,7 @@ function make_goukaku(obj, x, w, grid_y){
         sprite.y = obj.gridY.center(grid_y);
         index++;
         if(index >= list_char.length){
-            make_next_button(obj, obj.gridX.center(), 1200);
+            make_next_button(obj, obj.gridX.center(), 1250);
             clearInterval(id);
         }
     }, 1000);
@@ -79,7 +79,7 @@ function make_fugoukaku(obj, grid_y){
     var sprite = LargeNum('fugoukaku', 0.25).addChildTo(obj);
     sprite.x = obj.gridX.center();
     sprite.y = obj.gridY.center(grid_y);
-    make_next_button(obj, obj.gridX.center(), 1200);
+    make_next_button(obj, obj.gridX.center(), 1250);
 }
 
 function reserve_string(str) {

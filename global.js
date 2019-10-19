@@ -38,6 +38,10 @@ var ASSETS = {
       '8':'src/asset/8.png',
       '9':'src/asset/9.png',
       '/':'src/asset/slash.png',
+      'share_bg':'src/asset/share_bg.jpg',
+      'twitter_icon':'src/asset/twitter_icon.png',
+      'top_button01':'src/asset/button_top01.png',
+      'top_button02':'src/asset/button_top02.png',
     },
     spritesheet: {
         "hit_ss":
