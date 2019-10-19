@@ -5,9 +5,12 @@ var ASSETS = {
     image:{
       'bg':'src/asset/quiz_bg.jpg',
       'hit':'src/asset/promi_star_anime240.png',
-      'char':'src/asset/05_hutaki_kanata01.png',
+      'char':'src/asset/kyun_normal.png',
       'select':'src/asset/select_wnd.png',
+      'select02':'src/asset/select_wnd_02.png',
       'question_window':'src/asset/msg_wnd.png',
+      'correct':'src/asset/correct.png',
+      'wrong':'src/asset/wrong.png',
     },
     spritesheet: {
         "hit_ss":
