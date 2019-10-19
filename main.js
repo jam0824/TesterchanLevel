@@ -15,6 +15,7 @@ var main_obj;
 phina.main(function() {
   // アプリケーション生成
   var app = GameApp({
+    query: '#game',
     startLabel: 'opening', // メインシーンから開始する
     assets: ASSETS,
     width: SCREEN_WIDTH,

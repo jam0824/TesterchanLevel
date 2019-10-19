@@ -1,5 +1,6 @@
 var start_time;
 var time_label = "";
+var list_finished_question;
 
 // MainScene クラスを定義
 phina.define('QuizMain', {
@@ -7,6 +8,7 @@ phina.define('QuizMain', {
     init: function(option) {
       this.superInit(option);
       start_time = Date.now();
+      list_finished_question = [];
       question_number = 0;
       correct_num = 0;
         wrong_num = 0;
@@ -70,11 +72,11 @@ function make_black(obj, w, h, a, grid_x, grid_y){
   
     for(var i = 0; i < 4; i++){
       if(i == ans_no){
-        make_select(obj, group, i, question['correct'], true);
+        make_select(obj, group, i, question['correct'], question, true);
       }
       else{
         var ans = list_wrong_ans.pop()
-        make_select(obj, group, i, ans, false);
+        make_select(obj, group, i, ans, question, false);
       }
     }
     if(char != null){
@@ -107,7 +109,7 @@ function make_black(obj, w, h, a, grid_x, grid_y){
   }
   
   //回答ボタン（１つ）作成
-  function make_select(obj, group, grid_y, text, is_correct){
+  function make_select(obj, group, grid_y, text, origin_question, is_correct){
     y = grid_y * 2;
     var select = Sprite('select').addChildTo(group);
     select.x = obj.gridX.center();
@@ -117,7 +119,7 @@ function make_black(obj, w, h, a, grid_x, grid_y){
       if(is_tap_ok){
         is_tap_ok = false;
         select.setImage('select02');
-        onclick_event(obj, group, is_correct, Number(e.pointer.x), Number(e.pointer.y));
+        onclick_event(obj, group, is_correct, origin_question, Number(e.pointer.x), Number(e.pointer.y));
       }
     };
     var label = Label(text).addChildTo(group);
@@ -128,23 +130,26 @@ function make_black(obj, w, h, a, grid_x, grid_y){
   }
   
   //クリック後発火
-  function onclick_event(obj, group, is_correct, x, y){
+  function onclick_event(obj, group, is_correct, origin_question, x, y){
     make_hit(obj, x, y);
     //クリックしたときに1秒待つ。ドキドキ演出。QMAの動きパクリ
-    setTimeout(after_onclick_event, 1000, obj, group, is_correct);
+    setTimeout(after_onclick_event, 1000, obj, group, is_correct, origin_question);
   }
   //正解不正解エフェクト
-  function after_onclick_event(obj, group, is_correct){
+  function after_onclick_event(obj, group, is_correct, origin_question){
     if(is_correct){
       correct_num++;
+      origin_question['result'] = true;
       console.log("正解！！");
       make_correct(obj);
     }
     else{
       wrong_num++;
+      origin_question['result'] = false;
       console.log("まちがい……");
       make_wrong(obj);
     }
+    list_finished_question.push(origin_question);
     //エフェクト終了待ち
     setTimeout(wait_answer_effect, 1500, obj, group);
   }

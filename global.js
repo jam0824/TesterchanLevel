@@ -42,6 +42,7 @@ var ASSETS = {
       'twitter_icon':'src/asset/twitter_icon.png',
       'top_button01':'src/asset/button_top01.png',
       'top_button02':'src/asset/button_top02.png',
+      'check_button01':'src/asset/button_check01.png',
     },
     spritesheet: {
         "hit_ss":
