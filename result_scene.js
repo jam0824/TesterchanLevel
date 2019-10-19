@@ -7,9 +7,14 @@ phina.define('Result', {
         var sprite_bg = make_bg(this, 'result_bg', 0, 0, 0.05);
         var fade = make_result_fade_in(this, 'white', 0.05);
         char = make_charactor(this, 'char',this.gridX.center(), 1100, 0.1);
-        make_small_number(this, 26, 265, 275, 90);
-        setTimeout(make_large_number, 2000, this, "39/40", 660, 140, -1);
-        setTimeout(judge, 5000, this, true);
+        make_small_number(this, CLEAR_QUESTION_NUMBER, 265, 275, 90);
+
+        text = String(correct_num) + '/' + String(FINISH_QUESTION_NUMBER);
+        setTimeout(make_large_number, 2000, this, text, 660, 140, -1);
+
+        is_clear = (correct_num >= CLEAR_QUESTION_NUMBER) ? true : false;
+        setTimeout(judge, 5000, this, is_clear);
+        
         main_obj = this;
     },
 });

@@ -7,6 +7,7 @@ phina.define('Story', {
     superClass: 'DisplayScene',
     init: function(option) {
         this.superInit(option);
+        scenario_line = 0;
         this.backgroundColor = 'black';
         var sprite_bg = make_bg(this, 'bg', 0, 0, 0.1);
         var fade = make_story_fade_in(this);

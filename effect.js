@@ -64,12 +64,12 @@ phina.define('Start', {
         this.scaleY -= 0.25;
         this.alpha += 0.25;
       }
-      else if((this.cnt >= 5) && (this.cnt < 30)){
+      else if((this.cnt >= 5) && (this.cnt < 50)){
       }
-      else if((this.cnt >= 30) && (this.cnt < 32)){
-        this.alpha -= 0.4;
+      else if((this.cnt >= 50) && (this.cnt < 60)){
+        this.alpha -= 0.1;
       }
-      else if(this.cnt >= 32){
+      else if(this.cnt >= 60){
         this.remove();
       }
       this.cnt++;

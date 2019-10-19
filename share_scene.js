@@ -11,9 +11,12 @@ phina.define('Share', {
 });
 
 function show_share_screen(obj){
-    text = "ソフトウェアテスト知識試験テスターちゃんレベルで30/40の成績でした。かかった時間は3:22秒でした。";
-    var label = make_story_label(obj, 50, 270, new_line(text, 20));
     var name_label = make_name_label(obj, 120, 175, "Twitterシェア");
+
+    result = (correct_num >= CLEAR_QUESTION_NUMBER) ? "合格" : "不合格";
+    text = "ソフトウェアテスト知識試験テスターちゃんレベルで" + correct_num + "/" + FINISH_QUESTION_NUMBER + "の成績で" + result + "でした。かかった時間は" + time_label + "でした。";
+    var label = make_story_label(obj, 50, 270, new_line(text, 20));
+    
     var twitter_icon = make_twitter_icon(obj, obj.gridX.center(), obj.gridY.center(), text);
     var button = make_top_button(obj, obj.gridX.center(), 1250);
 }

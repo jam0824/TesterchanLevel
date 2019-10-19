@@ -1,8 +1,16 @@
+var start_time;
+var time_label = "";
+
 // MainScene クラスを定義
 phina.define('QuizMain', {
     superClass: 'DisplayScene',
     init: function(option) {
       this.superInit(option);
+      start_time = Date.now();
+      question_number = 0;
+      correct_num = 0;
+        wrong_num = 0;
+        is_tap_ok = false;
       var sprite_bg = make_sprite(this, 'bg', 0, 0);
       var rect = make_black(this, SCREEN_WIDTH, SCREEN_HEIGHT - 300, 0.5, 0, 1);
       var question_group = make_question(this);
@@ -81,10 +89,12 @@ function make_black(obj, w, h, a, grid_x, grid_y){
     var question_window = Sprite('question_window').addChildTo(group);
     question_window.x = obj.gridX.center();
     question_window.y = obj.gridY.center(grid_y);
+    text = new_line(text, 20)
     var label = Label(text).addChildTo(group);
-    label.x = obj.gridX.center();
+    label.x = LABEL_X;
     label.y = obj.gridY.center(grid_y);
     label.fill = '#5a4e46'; // 塗りつぶし色
+    label.align = 'left';
   }
   
   //第n問ラベル作成
@@ -141,6 +151,7 @@ function make_black(obj, w, h, a, grid_x, grid_y){
   //エフェクト終了後の次の問題表示
   function wait_answer_effect(obj, group){
     if(question_number == FINISH_QUESTION_NUMBER){
+        time_label = get_str_time(start_time);
       make_fade_white(obj);
       make_finish(obj);
     }
@@ -185,7 +196,7 @@ function make_black(obj, w, h, a, grid_x, grid_y){
   }
   //フィニッシュエフェクト作成
   function make_fade_white(obj){
-    var sprite = FadeOut(0.04, 'white').addChildTo(obj);
+    var sprite = FadeOut(0.02, 'white').addChildTo(obj);
     sprite.x = obj.gridX.center();
     sprite.y = obj.gridY.center();
   }

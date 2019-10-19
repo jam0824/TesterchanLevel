@@ -21,3 +21,20 @@ function new_line(text, line_num){
     } 
     return list_shuffle;
   }
+
+function get_str_time(start_time){
+    var end_time = Date.now();
+    all_sec = Math.floor((end_time -start_time)/1000);
+    min = Math.floor(all_sec / 60);
+    sec = all_sec % 60;
+    return add_zero(min) + ":" + add_zero(sec);
+}
+
+function add_zero(num){
+    if(num < 9){
+        return "0" + String(num);
+    }
+    else{
+        return String(num);
+    }
+}
