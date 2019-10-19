@@ -11,6 +11,12 @@ var ASSETS = {
       'question_window':'src/asset/msg_wnd.png',
       'correct':'src/asset/correct.png',
       'wrong':'src/asset/wrong.png',
+      'start':'src/asset/start.png',
+      'finish':'src/asset/finish.png',
+      'opening_bg':'src/asset/opening.jpg',
+      'opening_button01':'src/asset/button_start01.png',
+      'opening_button02':'src/asset/button_start02.png',
+      'opening_jump':'src/asset/openning_jump.png',
     },
     spritesheet: {
         "hit_ss":
