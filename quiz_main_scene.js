@@ -4,26 +4,28 @@ phina.define('QuizMain', {
     init: function(option) {
       this.superInit(option);
       var sprite_bg = make_sprite(this, 'bg', 0, 0);
-      var rect = make_black(this);
+      var rect = make_black(this, SCREEN_WIDTH, SCREEN_HEIGHT - 300, 0.5, 0, 1);
       var question_group = make_question(this);
       make_start(this);
+      main_obj = this;
     },
   });
   
-  //黒背景作成
-  function make_black(obj){
+//黒背景作成
+function make_black(obj, w, h, a, grid_x, grid_y){
     var rect = RectangleShape({
-      width:SCREEN_WIDTH,
-      height:SCREEN_HEIGHT - 300,
-      strokeWidth:0,
-      fill:'back',
-      cornerRadius:10
+        width:w,
+        height:h,
+        strokeWidth:0,
+        fill:'back',
+        cornerRadius:10
     }).addChildTo(obj);
-    rect.x = obj.gridX.center();
-    rect.y = obj.gridY.center(1);
-    rect.alpha = 0.5;
+    rect.x = obj.gridX.center(grid_x);
+    rect.y = obj.gridY.center(grid_y);
+    rect.alpha = a;
     return rect;
-  }
+}
+
   
   //汎用スプライト作成メソッド
   function make_sprite(obj, sprite_name, x, y){
@@ -183,7 +185,7 @@ phina.define('QuizMain', {
   }
   //フィニッシュエフェクト作成
   function make_fade_white(obj){
-    var sprite = FadeWhite().addChildTo(obj);
+    var sprite = FadeOut(0.04, 'white').addChildTo(obj);
     sprite.x = obj.gridX.center();
     sprite.y = obj.gridY.center();
   }
@@ -199,151 +201,10 @@ phina.define('QuizMain', {
     return list_shuffle;
   }
   
-  //Hitクラス
-  phina.define('Hit', {
-    superClass: 'Sprite',
-    init: function() {
-      this.superInit('hit', 240, 240);
-      var anim = FrameAnimation('hit_ss').attachTo(this);
-      anim.gotoAndPlay('hit');
-      this.anim = anim;
-    },
-    // 毎フレーム処理
-    update: function() {
-      if (this.anim.finished) {
-        this.remove();
-      }
-    },
-  });
+
   
   
-  //正解クラス
-  phina.define('Correct', {
-    superClass: 'Sprite',
-    init: function() {
-      this.superInit('correct');
-      this.cnt = 0
-      this.scaleX = 2;
-      this.scaleY = 2;
-      this.alpha = 0;
-    },
-    // 毎フレーム処理
-    update: function() {
-      anim_answer(this);
-    },
-  });
-  //不正解クラス
-  phina.define('Wrong', {
-    superClass: 'Sprite',
-    init: function() {
-      this.superInit('wrong');
-      this.cnt = 0
-      this.scaleX = 2;
-      this.scaleY = 2;
-      this.alpha = 0;
-    },
-    // 毎フレーム処理
-    update: function() {
-      anim_answer(this);
-    },
-  });
   
-  //正解不正解アニメーション設定
-  function anim_answer(obj){
-    if(obj.cnt < 4){
-      obj.scaleX -= 0.25;
-      obj.scaleY -= 0.25;
-      obj.alpha += 0.25;
-    }
-    else if((obj.cnt >= 5) && (obj.cnt < 30)){
-    }
-    else if((obj.cnt >= 30) && (obj.cnt < 32)){
-      obj.alpha -= 0.4;
-    }
-    else if(obj.cnt >= 32){
-      obj.remove();
-    }
-    obj.cnt++;
-  }
   
-  //スタートエフェクト
-  phina.define('Start', {
-    superClass: 'Sprite',
-    init: function() {
-      this.superInit('start');
-      this.cnt = 0
-      this.scaleX = 1.3;
-      this.scaleY = 1.3;
-      this.alpha = 0;
-    },
-    // 毎フレーム処理
-    update: function() {
-      if(this.cnt < 30){
-        this.scaleX -= 0.01;
-        this.scaleY -= 0.01;
-        if(this.alpha < 1){
-          this.alpha += 0.1;
-        }
-      }
-      else if((this.cnt >= 30) && (this.cnt < 60)){
   
-      }
-      else if((this.cnt >= 60) && (this.cnt < 70)){
-        this.alpha -= 0.1;
-      }
-      else if(this.cnt == 70){
-        is_tap_ok = true;
-        this.remove();
-      }
-      this.cnt++;
-    },
-  });
   
-  //終了エフェクト
-  phina.define('Finish', {
-    superClass: 'Sprite',
-    init: function() {
-      this.superInit('finish');
-      this.cnt = 0
-      this.scaleX = 2;
-      this.scaleY = 2;
-      this.alpha = 0;
-    },
-    // 毎フレーム処理
-    update: function() {
-      if(this.cnt < 4){
-        this.scaleX -= 0.25;
-        this.scaleY -= 0.25;
-        this.alpha += 0.25;
-      }
-      else if((this.cnt >= 5) && (this.cnt < 30)){
-      }
-      else if((this.cnt >= 30) && (this.cnt < 32)){
-        this.alpha -= 0.4;
-      }
-      else if(this.cnt >= 32){
-        this.remove();
-      }
-      this.cnt++;
-    },
-  });
-  
-  //ホワイトフェード
-  phina.define('FadeWhite', {
-    superClass: 'RectangleShape',
-    init: function() {
-      this.superInit();
-      this.width = SCREEN_WIDTH;
-      this.height = SCREEN_HEIGHT;
-      this.fill = 'white';
-      this.alpha = 0;
-      this.cnt = 0;
-    },
-    // 毎フレーム処理
-    update: function() {
-      if(this.alpha < 1){
-        this.alpha += 0.04;
-      }
-      this.cnt++;
-    },
-  });
