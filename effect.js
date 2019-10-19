@@ -217,3 +217,47 @@ phina.define('Charactor', {
         }
     },
 });
+
+  //小さな数字
+  phina.define('SmallNum', {
+    superClass: 'Sprite',
+    init: function(label, inclease_scale) {
+      this.superInit(label);
+      this.cnt = 0
+      this.scaleX = 1;
+      this.scaleY = 1;
+      this.alpha = 0;
+      this.inclease_scale = inclease_scale;
+    },
+    // 毎フレーム処理
+    update: function() {
+        if(this.cnt < 4){
+            this.scaleX -= this.inclease_scale;
+            this.scaleY -= this.inclease_scale;
+            this.alpha += 0.25;
+          }
+          this.cnt++;
+    },
+  });
+
+//大きな数字
+phina.define('LargeNum', {
+    superClass: 'Sprite',
+    init: function(label, inclease_scale) {
+        this.superInit(label);
+        this.cnt = 0
+        this.scaleX = 2;
+        this.scaleY = 2;
+        this.alpha = 0;
+        this.inclease_scale = inclease_scale;
+    },
+    // 毎フレーム処理
+    update: function() {
+        if(this.cnt < 4){
+            this.scaleX -= this.inclease_scale;
+            this.scaleY -= this.inclease_scale;
+            this.alpha += 0.25;
+            }
+            this.cnt++;
+    },
+});

@@ -2,6 +2,7 @@
 phina.globalize();
 
 var FINISH_QUESTION_NUMBER = 4;
+var CLEAR_QUESTION_NUMBER = 2;
 var question_number = 0;
 var char;
 var correct_num = 0;
@@ -14,7 +15,7 @@ var main_obj;
 phina.main(function() {
   // アプリケーション生成
   var app = GameApp({
-    startLabel: 'opening', // メインシーンから開始する
+    startLabel: 'result', // メインシーンから開始する
     assets: ASSETS,
     width: SCREEN_WIDTH,
     height: SCREEN_HEIGHT,
@@ -33,6 +34,11 @@ phina.main(function() {
       {
         className: 'QuizMain',
         label: 'quiz_main',
+        nextLabel: 'result',
+      },
+      {
+        className: 'Result',
+        label: 'result',
         nextLabel: 'opening',
       },
     ]

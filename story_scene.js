@@ -8,7 +8,7 @@ phina.define('Story', {
     init: function(option) {
         this.superInit(option);
         this.backgroundColor = 'black';
-        var sprite_bg = make_bg(this, 'bg', 0, 0);
+        var sprite_bg = make_bg(this, 'bg', 0, 0, 0.1);
         var fade = make_story_fade_in(this);
         setTimeout(show_story_window, 500, this);
         main_obj = this;
@@ -16,15 +16,15 @@ phina.define('Story', {
 });
 
 //背景もフェードさせることで点滅回避
-function make_bg(obj, sprite_name, x, y){
-    var bg = Charactor('bg', 0.1).addChildTo(obj);
+function make_bg(obj, sprite_name, x, y, alpha){
+    var bg = Charactor(sprite_name, alpha).addChildTo(obj);
     bg.x = obj.gridX.center();
     bg.y = obj.gridY.center();
     return bg;
 }
 
 function show_story_window(obj){
-    char = make_charactor(obj);
+    char = make_charactor(obj, 'rin_normal', obj.gridX.center(1), obj.gridY.center(1), 0.1);
     var window = make_story_window(obj, 4);
     var skip_button = make_skip_button(obj, 640, 50);
     var name_label = make_name_label(obj, 60, 774, "凛太朗");
@@ -51,7 +51,7 @@ function next_messege(obj, num){
         num++;
     }
     else{
-        make_story_fade_out(obj);
+        var fadeout = fade(obj, 'white', 0.04);
     }
     return num;
 }
@@ -73,19 +73,13 @@ function make_story_fade_in(obj){
     return sprite;
 }
 
-function make_charactor(obj){
-    var char = Charactor('rin_normal', 0.1).addChildTo(obj);
-    char.x = obj.gridX.center(1);
-    char.y = obj.gridY.center(1);
+function make_charactor(obj, sprite_name, x, y, alpha){
+    var char = Charactor(sprite_name, alpha).addChildTo(obj);
+    char.x = x;
+    char.y = y;
     return char;
 }
 
-function make_story_fade_out(obj){
-    var sprite = FadeOut(0.04, 'white').addChildTo(obj);
-    sprite.x = obj.gridX.center();
-    sprite.y = obj.gridY.center();
-    return sprite;
-}
 
 function make_skip_button(obj, x, y){
     var button = Sprite('skip_button01').addChildTo(obj);
@@ -95,9 +89,9 @@ function make_skip_button(obj, x, y){
     button.onpointend = function(e){
         button.setImage('skip_button02');
         make_hit(obj, Number(e.pointer.x), Number(e.pointer.y));
-        make_story_fade_out(obj);
+        var fadeout = fade(obj, 'white', 0.04);
     };
-    return window;
+    return button;
 }
 
  //第n問ラベル作成

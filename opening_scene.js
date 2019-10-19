@@ -23,14 +23,14 @@ function make_opening_button(obj, grid_y){
     select.onpointend = function(e){
         select.setImage('opening_button02');
         make_hit(obj, Number(e.pointer.x), Number(e.pointer.y));
-        var fadeout = fade(obj)
+        var fadeout = fade(obj, 'black', 0.1)
     };
 
     return select;
 }
 
-function fade(obj){
-    var fadeout = FadeOut(0.1, 'black').addChildTo(obj);
+function fade(obj, fill_color, alpha){
+    var fadeout = FadeOut(alpha, fill_color).addChildTo(obj);
     fadeout.x = obj.gridX.center();
     fadeout.y = obj.gridY.center();
     return fadeout;
