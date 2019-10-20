@@ -8,6 +8,8 @@ phina.define('QuizMain', {
     init: function(option) {
       this.superInit(option);
       play_bgm("quiz_bgm");
+      //DBの中身をシャッフルしてしまう
+      question_db = sort_array(question_db);
       start_time = Date.now();
       list_finished_question = [];
       question_number = 0;
@@ -54,8 +56,7 @@ function make_black(obj, w, h, a, grid_x, grid_y){
   
   //問題取得
   function get_question(){
-    var random = Math.floor(Math.random() * question_db.length);
-    return question_db[random];
+    return question_db.pop();
   }
   
   //質問作成メイン

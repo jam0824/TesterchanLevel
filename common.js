@@ -1,12 +1,19 @@
 function new_line(text, line_num){
     var return_text = "";
+    var cnt = 0;
     for(var i = 0; i < text.length; i++){
-        if((i != 0) && (i % line_num == 0)){
+        if((cnt != 0) && (cnt % line_num == 0)){
             return_text += "\n" + text.charAt(i);
+            cnt = 0;
+        }
+        else if(text.charAt(i) == "＠"){
+            return_text += "\n";
+            cnt = 0;
         }
         else{
             return_text += text.charAt(i);
         }
+        cnt++;
     }
     return return_text;
 }
@@ -31,7 +38,7 @@ function get_str_time(start_time){
 }
 
 function add_zero(num){
-    if(num < 9){
+    if(num < 10){
         return "0" + String(num);
     }
     else{

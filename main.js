@@ -1,8 +1,8 @@
 // phina.js をグローバル領域に展開
 phina.globalize();
 
-var FINISH_QUESTION_NUMBER = 4;
-var CLEAR_QUESTION_NUMBER = 2;
+var FINISH_QUESTION_NUMBER = 10;
+var CLEAR_QUESTION_NUMBER = 6;
 var question_number = 0;
 var char;
 var correct_num = 0;

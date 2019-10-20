@@ -74,7 +74,6 @@ try{
                 }
             },
         },
-        /*
         sound:{
             'opening_bgm':'src/bgm/opening_bgm.mp3',
             'story_bgm':'src/bgm/story_bgm.mp3',
@@ -91,7 +90,6 @@ try{
             'result_fanfare':'src/se/result_fanfare.mp3',
             'result_fate':'src/se/result_fate.mp3',
         },
-        */
     };
 }
 catch(e){
