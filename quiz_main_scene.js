@@ -17,7 +17,7 @@ phina.define('QuizMain', {
         wrong_num = 0;
         is_tap_ok = false;
       var sprite_bg = make_sprite(this, 'bg', 0, 0);
-      var rect = make_black(this, SCREEN_WIDTH, SCREEN_HEIGHT - 300, 0.5, 0, 1);
+      var rect = make_black(this, SCREEN_WIDTH, SCREEN_HEIGHT - 200, 0.5, 0, 0);
       var question_group = make_question(this);
       make_start(this);
       main_obj = this;
@@ -66,8 +66,8 @@ function make_black(obj, w, h, a, grid_x, grid_y){
     var question = get_question();
     var ans_no = Math.floor(Math.random() * 4);
   
-    make_question_window(obj, group, -4, question['question']);
-    make_question_number_label(obj, group, 110, question_number);
+    make_question_window(obj, group, 220, question['question']);
+    make_question_number_label(obj, group, 40, question_number);
   
     var list_wrong_ans = question['wrong'].split(',');
     list_wrong_ans = sort_array(list_wrong_ans);
@@ -90,14 +90,14 @@ function make_black(obj, w, h, a, grid_x, grid_y){
   }
   
   //問題表示画面作成
-  function make_question_window(obj, group, grid_y, text){
+  function make_question_window(obj, group, y, text){
     var question_window = Sprite('question_window').addChildTo(group);
     question_window.x = obj.gridX.center();
-    question_window.y = obj.gridY.center(grid_y);
+    question_window.y = y;
     text = new_line(text, 20)
     var label = Label(text).addChildTo(group);
     label.x = LABEL_X;
-    label.y = obj.gridY.center(grid_y);
+    label.y = y;
     label.fill = '#5a4e46'; // 塗りつぶし色
     label.align = 'left';
   }
@@ -112,11 +112,11 @@ function make_black(obj, w, h, a, grid_x, grid_y){
   }
   
   //回答ボタン（１つ）作成
-  function make_select(obj, group, grid_y, text, origin_question, is_correct){
-    y = grid_y * 2;
+  function make_select(obj, group, index, text, origin_question, is_correct){
+    y = index * 210 + 540;
     var select = Sprite('select').addChildTo(group);
     select.x = obj.gridX.center();
-    select.y = obj.gridY.center(y);
+    select.y = y
     select.setInteractive(true);
     select.onpointend = function(e){
       if(is_tap_ok){
@@ -126,10 +126,11 @@ function make_black(obj, w, h, a, grid_x, grid_y){
         onclick_event(obj, group, is_correct, origin_question, Number(e.pointer.x), Number(e.pointer.y));
       }
     };
-    var label = Label(text).addChildTo(group);
-    label.x = obj.gridX.center();
-    label.y = obj.gridY.center(y);
+    var label = Label(new_line(text, 16)).addChildTo(group);
+    label.x = obj.gridX.center(-7);
+    label.y = y
     label.fill = '#5a4e46'; // 塗りつぶし色
+    label.align = 'left';
     return group;
   }
   

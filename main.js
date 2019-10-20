@@ -1,24 +1,14 @@
 // phina.js をグローバル領域に展開
 phina.globalize();
 
-var FINISH_QUESTION_NUMBER = 10;
-var CLEAR_QUESTION_NUMBER = 6;
-var question_number = 0;
-var char;
-var correct_num = 0;
-var wrong_num = 0;
-var is_tap_ok = false;
-var is_sound = false;
-var main_obj;
-
 
 // メイン処理
 phina.main(function() {
   // アプリケーション生成
+  
   var app = GameApp({
     query: '#game',
-    startLabel: 'opening', // メインシーンから開始する
-    assets: ASSETS,
+    startLabel: 'quiz_main', // メインシーンから開始する
     width: SCREEN_WIDTH,
     height: SCREEN_HEIGHT,
     fill:'black',
@@ -48,8 +38,10 @@ phina.main(function() {
         label: 'share',
         nextLabel: 'opening',
       },
-    ]
+    ],
+    assets: ASSETS,
   });
+  //load_sound_assets();
   // アプリケーション実行
   app.run();
 });
