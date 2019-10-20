@@ -1,21 +1,26 @@
 function new_line(text, line_num){
+    var char_count = line_num * 2;
     var return_text = "";
-    var cnt = 0;
     for(var i = 0; i < text.length; i++){
-        if((cnt != 0) && (cnt % line_num == 0)){
+        
+        if(char_count <= 0){
             return_text += "\n" + text.charAt(i);
-            cnt = 0;
+            char_count = line_num * 2;
         }
         else if(text.charAt(i) == "＠"){
             return_text += "\n";
-            cnt = 0;
+            char_count = line_num * 2;
         }
         else{
             return_text += text.charAt(i);
         }
-        cnt++;
+        char_count -= is_hankaku(text.charAt(i)) ? 1 : 2;
     }
     return return_text;
+}
+
+function is_hankaku(value){
+    return !value.match(/[^\x01-\x7E]/) || !value.match(/[^\uFF65-\uFF9F]/);
 }
 
   //汎用配列並び替えメソッド
