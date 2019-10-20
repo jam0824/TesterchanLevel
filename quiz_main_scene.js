@@ -7,7 +7,7 @@ phina.define('QuizMain', {
     superClass: 'DisplayScene',
     init: function(option) {
       this.superInit(option);
-      if(is_sound) SoundManager.playMusic("quiz_bgm");
+      play_bgm("quiz_bgm");
       start_time = Date.now();
       list_finished_question = [];
       question_number = 0;
@@ -80,10 +80,11 @@ function make_black(obj, w, h, a, grid_x, grid_y){
         make_select(obj, group, i, ans, question, false);
       }
     }
+
     if(char != null){
       char.remove();
     }
-    char = make_sprite(obj, 'char', 700, 1150);
+    char = make_sprite(obj, 'kyun_oko', 700, 984);
     return group;
   }
   
@@ -118,7 +119,7 @@ function make_black(obj, w, h, a, grid_x, grid_y){
     select.setInteractive(true);
     select.onpointend = function(e){
       if(is_tap_ok){
-        if(is_sound) SoundManager.play('quiz_select');
+        play_se('quiz_select');
         is_tap_ok = false;
         select.setImage('select02');
         onclick_event(obj, group, is_correct, origin_question, Number(e.pointer.x), Number(e.pointer.y));
@@ -134,20 +135,23 @@ function make_black(obj, w, h, a, grid_x, grid_y){
   //クリック後発火
   function onclick_event(obj, group, is_correct, origin_question, x, y){
     make_hit(obj, x, y);
+    char_select_effect(obj);
     //クリックしたときに1秒待つ。ドキドキ演出。QMAの動きパクリ
     setTimeout(after_onclick_event, 1000, obj, group, is_correct, origin_question);
   }
   //正解不正解エフェクト
   function after_onclick_event(obj, group, is_correct, origin_question){
     if(is_correct){
-        if(is_sound) SoundManager.play('quiz_correct');
+      play_se('quiz_correct');
+      char_correct_effect(obj)
       correct_num++;
       origin_question['result'] = true;
       console.log("正解！！");
       make_correct(obj);
     }
     else{
-        if(is_sound) SoundManager.play('quiz_wrong');
+      play_se('quiz_wrong');
+      char_wrong_effect(obj);
       wrong_num++;
       origin_question['result'] = false;
       console.log("まちがい……");
@@ -210,10 +214,43 @@ function make_black(obj, w, h, a, grid_x, grid_y){
     sprite.y = obj.gridY.center();
   }
   
+function char_select_effect(obj){
+  var random = Math.floor(Math.random() * 3);
+  if(random == 0){
+    char.setImage('kyun_oko_gununu');
+  }
+  else if(random == 1){
+    char.setImage('kyun_komari_gununu');
+  }
+  else{
+    char.setImage('kyun_komari');
+  }
+}
 
   
-
+function char_correct_effect(obj){
   
+  var random = Math.floor(Math.random() * 3);
+  if(random == 0){
+    char.setImage('kyun_egao');
+  }
+  else if(random == 1){
+    char.setImage('kyun_egao_kotti');
+  }
+  else{
+    char.setImage('kyun_egao_metoji');
+  }
+  var sprite = FeelIcon('feel_correct', 0.05).addChildTo(obj);
+    sprite.x = 600;
+    sprite.y = 634;
+}
+
+function char_wrong_effect(obj){
+  char.setImage('kyun_hawawa');
+  var sprite = FeelIcon('feel_wrong', 0.05).addChildTo(obj);
+    sprite.x = 600;
+    sprite.y = 634;
+}
   
   
   

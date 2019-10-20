@@ -3,14 +3,15 @@ phina.define('Result', {
     superClass: 'DisplayScene',
     init: function(option) {
         this.superInit(option);
-        if(is_sound) SoundManager.playMusic("result_bgm");
+        play_bgm("result_bgm");
         this.backgroundColor = 'white';
         var sprite_bg = make_bg(this, 'result_bg', 0, 0, 0.05);
         var fade = make_result_fade_in(this, 'white', 0.05);
-        char = make_charactor(this, 'char',this.gridX.center(), 1100, 0.1);
-        make_small_number(this, CLEAR_QUESTION_NUMBER, 265, 275, 90);
-
-        text = String(correct_num) + '/' + String(FINISH_QUESTION_NUMBER);
+        char = make_charactor(this, 'kyun_egao_kotti',this.gridX.center(), 984, 0.1);
+        //make_small_number(this, CLEAR_QUESTION_NUMBER, 265, 275, 90);
+        //text = String(correct_num) + '/' + String(FINISH_QUESTION_NUMBER);
+        make_small_number(this, 26, 265, 275, 90);
+        text = "37/40";
         setTimeout(make_large_number, 2000, this, text, 660, 140, -1);
 
         is_clear = (correct_num >= CLEAR_QUESTION_NUMBER) ? true : false;
@@ -33,7 +34,7 @@ function make_small_number(obj, num, x, y, w){
     var id = setInterval(function(){
         var c = text.charAt(index);
         var sprite = SmallNum(c, 0.1).addChildTo(obj);
-        if(is_sound) SoundManager.play('result_bishi');
+        play_se('result_bishi');
         sprite.x = x - (index * w);
         sprite.y = y;
         index++;
@@ -49,7 +50,7 @@ function make_large_number(obj, result_text, x, w, grid_y){
     var id = setInterval(function(){
         var c = text.charAt(index);
         var sprite = LargeNum(c, 0.25).addChildTo(obj);
-        if(is_sound) SoundManager.play('result_don');
+        play_se('result_don');
         sprite.x = x - (index * w);
         sprite.y = obj.gridY.center(grid_y);
         index++;
@@ -73,13 +74,14 @@ function make_goukaku(obj, x, w, grid_y){
     var list_char = ['gou', 'kaku'];
     var id = setInterval(function(){
         var sprite = LargeNum(list_char[index], 0.25).addChildTo(obj);
-        if(is_sound) SoundManager.play('result_goukaku');
+        play_se('result_goukaku');
         sprite.x = x + (index * w);
         sprite.y = obj.gridY.center(grid_y);
         index++;
         if(index >= list_char.length){
             make_next_button(obj, obj.gridX.center(), 1250);
-            if(is_sound) SoundManager.play('result_fanfare');
+            char.setImage('kyun_egao_metoji');
+            play_se('result_fanfare');
             clearInterval(id);
         }
     }, 1000);
@@ -87,10 +89,11 @@ function make_goukaku(obj, x, w, grid_y){
 
 function make_fugoukaku(obj, grid_y){
     var sprite = LargeNum('fugoukaku', 0.25).addChildTo(obj);
-    if(is_sound) SoundManager.play('result_goukaku');
-    if(is_sound) SoundManager.play('result_fate');
+    play_se('result_goukaku');
+    play_se('result_fate');
     sprite.x = obj.gridX.center();
     sprite.y = obj.gridY.center(grid_y);
+    char.setImage('kyun_hawawa');
     make_next_button(obj, obj.gridX.center(), 1250);
 }
 
@@ -104,7 +107,7 @@ function make_next_button(obj, x, y){
     button.y = y;
     button.setInteractive(true);
     button.onpointend = function(e){
-        if(is_sound) SoundManager.play('opening_decision');
+        play_se('opening_decision');
         button.setImage('next_button02');
         make_hit(obj, Number(e.pointer.x), Number(e.pointer.y));
         var fadeout = fade(obj, 'black', 0.1)

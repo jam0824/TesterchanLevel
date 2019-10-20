@@ -7,7 +7,7 @@ phina.define('Story', {
     superClass: 'DisplayScene',
     init: function(option) {
         this.superInit(option);
-        if(is_sound) SoundManager.playMusic("story_bgm");
+        play_bgm("story_bgm");
         scenario_line = 0;
         this.backgroundColor = 'black';
         var sprite_bg = make_bg(this, 'bg', 0, 0, 0.1);
@@ -40,7 +40,7 @@ function make_story_window(obj, grid_y){
     window.y = obj.gridY.center(grid_y);
     window.setInteractive(true);
     window.onpointend = function(e){
-        if(is_sound) SoundManager.play('story_msg');
+        play_se('story_msg');
         make_hit(obj, Number(e.pointer.x), Number(e.pointer.y));
         scenario_line = next_messege(obj, scenario_line);
     };
@@ -90,7 +90,7 @@ function make_skip_button(obj, x, y){
     button.y = y;
     button.setInteractive(true);
     button.onpointend = function(e){
-        if(is_sound) SoundManager.play('opening_decision');
+        play_se('opening_decision');
         button.setImage('skip_button02');
         make_hit(obj, Number(e.pointer.x), Number(e.pointer.y));
         var fadeout = fade(obj, 'white', 0.04);

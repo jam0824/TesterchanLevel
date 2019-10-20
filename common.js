@@ -38,3 +38,31 @@ function add_zero(num){
         return String(num);
     }
 }
+
+function play_se(se_name){
+    try {
+        if(is_sound){
+            SoundManager.play(se_name);
+        }
+    } catch(e) {
+        console.log( e.message );
+    }
+}
+
+function play_bgm(bgm_name){
+    try {
+        if(is_sound){
+            SoundManager.playMusic(bgm_name);
+        }
+    } catch(e) {
+        console.log( e.message );
+    }
+}
+
+function stop_bgm(){
+    try {
+        SoundManager.stopMusic();
+    } catch(e) {
+        console.log( e.message );
+    }
+}

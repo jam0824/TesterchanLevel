@@ -144,7 +144,7 @@ phina.define('FadeOut', {
         }
         else{
             //this.remove();
-            SoundManager.stopMusic();
+            stop_bgm()
             main_obj.exit();
         }
     },
@@ -261,4 +261,27 @@ phina.define('LargeNum', {
             }
             this.cnt++;
     },
+});
+
+
+//感情アイコン
+phina.define('FeelIcon', {
+  superClass: 'Sprite',
+  init: function(label, inclease_alpha) {
+      this.superInit(label);
+      this.alpha = 1;
+      this.inclease_alpha = inclease_alpha;
+      this.cnt = 0;
+  },
+  // 毎フレーム処理
+  update: function() {
+      if(this.alpha > 0){
+        this.alpha -= this.inclease_alpha;
+        if(this.alpha < 0.1){
+          this.remove();
+        }
+      }
+      this.x -= 0.1;
+      this.y -= 0.1;
+  },
 });

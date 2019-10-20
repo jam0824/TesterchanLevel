@@ -8,7 +8,7 @@ var char;
 var correct_num = 0;
 var wrong_num = 0;
 var is_tap_ok = false;
-var is_sound = true;
+var is_sound = false;
 var main_obj;
 
 
