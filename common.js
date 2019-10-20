@@ -23,16 +23,22 @@ function is_hankaku(value){
     return !value.match(/[^\x01-\x7E]/) || !value.match(/[^\uFF65-\uFF9F]/);
 }
 
-  //汎用配列並び替えメソッド
-  function sort_array(list_shuffle){
+//汎用配列並び替えメソッド
+function sort_array(list_shuffle){
     for(var i = list_shuffle.length - 1; i > 0; i--){
-      var r = Math.floor(Math.random() * (i + 1));
-      var tmp = list_shuffle[i];
-      list_shuffle[i] = list_shuffle[r];
-      list_shuffle[r] = tmp;
+        var r = Math.floor(Math.random() * (i + 1));
+        var tmp = list_shuffle[i];
+        list_shuffle[i] = list_shuffle[r];
+        list_shuffle[r] = tmp;
     } 
     return list_shuffle;
-  }
+}
+
+//リストからランダムの値を返す
+function random_value(list_data){
+    var list_random = sort_array(list_data);
+    return list_random[0];
+}
 
 function get_str_time(start_time){
     var end_time = Date.now();

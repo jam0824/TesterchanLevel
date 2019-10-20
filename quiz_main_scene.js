@@ -1,21 +1,18 @@
 var start_time;
 var time_label = "";
 var list_finished_question;
+var use_question_db;
 
 // MainScene クラスを定義
 phina.define('QuizMain', {
     superClass: 'DisplayScene',
     init: function(option) {
       this.superInit(option);
+      init_global_value();
       play_bgm("quiz_bgm");
-      //DBの中身をシャッフルしてしまう
-      question_db = sort_array(question_db);
-      start_time = Date.now();
-      list_finished_question = [];
-      question_number = 0;
-      correct_num = 0;
-        wrong_num = 0;
-        is_tap_ok = false;
+      //DBの中身をシャッフルしていれる
+      use_question_db = sort_array(use_question_db);
+      
       var sprite_bg = make_sprite(this, 'bg', 0, 0);
       var rect = make_black(this, SCREEN_WIDTH, SCREEN_HEIGHT - 200, 0.5, 0, 0);
       var question_group = make_question(this);
@@ -23,6 +20,16 @@ phina.define('QuizMain', {
       main_obj = this;
     },
   });
+
+function init_global_value(){
+  start_time = Date.now();
+  list_finished_question = [];
+  use_question_db = Array.from(question_db);
+  question_number = 0;
+  correct_num = 0;
+  wrong_num = 0;
+  is_tap_ok = false;
+}
   
 //黒背景作成
 function make_black(obj, w, h, a, grid_x, grid_y){
@@ -56,7 +63,7 @@ function make_black(obj, w, h, a, grid_x, grid_y){
   
   //問題取得
   function get_question(){
-    return question_db.pop();
+    return use_question_db.pop();
   }
   
   //質問作成メイン
@@ -65,7 +72,7 @@ function make_black(obj, w, h, a, grid_x, grid_y){
     var group = DisplayElement().addChildTo(obj);
     var question = get_question();
     var ans_no = Math.floor(Math.random() * 4);
-  
+    console.log(question);
     make_question_window(obj, group, 220, question['question']);
     make_question_number_label(obj, group, 47, question_number);
   
@@ -217,43 +224,35 @@ function make_black(obj, w, h, a, grid_x, grid_y){
   }
   
 function char_select_effect(obj){
-  var random = Math.floor(Math.random() * 3);
-  if(random == 0){
-    char.setImage('kyun_oko_gununu');
-  }
-  else if(random == 1){
-    char.setImage('kyun_komari_gununu');
-  }
-  else{
-    char.setImage('kyun_komari');
-  }
+  var list_sprite = [
+    'kyun_oko_gununu', 
+    'kyun_komari_gununu', 
+    'kyun_komari'
+  ];
+  char.setImage(random_value(list_sprite));
 }
 
   
 function char_correct_effect(obj){
-  
-  var random = Math.floor(Math.random() * 3);
-  if(random == 0){
-    char.setImage('kyun_egao');
-  }
-  else if(random == 1){
-    char.setImage('kyun_egao_kotti');
-  }
-  else{
-    char.setImage('kyun_egao_metoji');
-  }
-  var sprite = FeelIcon('feel_correct', 0.05).addChildTo(obj);
-    sprite.x = 600;
-    sprite.y = 634;
+  var list_sprite = [
+    'kyun_egao', 
+    'kyun_egao_kotti', 
+    'kyun_egao_metoji'
+  ];
+  char.setImage(random_value(list_sprite));
+  make_feel_icon(obj, 'feel_correct');
 }
 
 function char_wrong_effect(obj){
   char.setImage('kyun_hawawa');
-  var sprite = FeelIcon('feel_wrong', 0.05).addChildTo(obj);
-    sprite.x = 600;
-    sprite.y = 634;
+  make_feel_icon(obj, 'feel_wrong');
 }
-  
+
+function make_feel_icon(obj, sprite_name){
+  var sprite = FeelIcon(sprite_name, 0.05).addChildTo(obj);
+  sprite.x = 600;
+  sprite.y = 634;
+}
   
   
   
