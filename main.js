@@ -8,7 +8,7 @@ phina.main(function() {
   
   var app = GameApp({
     query: '#game',
-    startLabel: 'quiz_main', // メインシーンから開始する
+    startLabel: 'opening', // メインシーンから開始する
     width: SCREEN_WIDTH,
     height: SCREEN_HEIGHT,
     fill:'black',

@@ -67,7 +67,7 @@ function make_black(obj, w, h, a, grid_x, grid_y){
     var ans_no = Math.floor(Math.random() * 4);
   
     make_question_window(obj, group, 220, question['question']);
-    make_question_number_label(obj, group, 40, question_number);
+    make_question_number_label(obj, group, 47, question_number);
   
     var list_wrong_ans = question['wrong'].split(',');
     list_wrong_ans = sort_array(list_wrong_ans);
