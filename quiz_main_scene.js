@@ -2,6 +2,7 @@ var start_time;
 var time_label = "";
 var list_finished_question;
 var use_question_db;
+var rate_label;
 
 // MainScene クラスを定義
 phina.define('QuizMain', {
@@ -9,6 +10,7 @@ phina.define('QuizMain', {
     init: function(option) {
       this.superInit(option);
       init_global_value();
+      main_obj = this;
       play_bgm("quiz_bgm");
       //DBの中身をシャッフルしていれる
       use_question_db = sort_array(use_question_db);
@@ -17,7 +19,7 @@ phina.define('QuizMain', {
       var rect = make_black(this, SCREEN_WIDTH, SCREEN_HEIGHT - 200, 0.5, 0, 0);
       var question_group = make_question(this);
       make_start(this);
-      main_obj = this;
+      
     },
   });
 
@@ -74,6 +76,9 @@ function make_black(obj, w, h, a, grid_x, grid_y){
     var ans_no = Math.floor(Math.random() * 4);
     make_question_window(obj, group, 220, question['question']);
     make_question_number_label(obj, group, 47, question_number);
+    rate_label = make_pass_rate_label(obj,obj.gridX.center(3), 47);
+    //dbからデータ取得
+    db_select_question(obj, question);
   
     var list_wrong_ans = question['wrong'].split(',');
     list_wrong_ans = sort_array(list_wrong_ans);
@@ -115,6 +120,16 @@ function make_black(obj, w, h, a, grid_x, grid_y){
     label.x = obj.gridX.center();
     label.y = y;
     label.fill = '#fedc60'; // 塗りつぶし色
+    return label;
+  }
+  //正答率ラベル作成
+  function make_pass_rate_label(obj, x, y){
+    var label = Label(text).addChildTo(obj);
+    label.x = x;
+    label.y = y;
+    label.fill = '#fedc60'; // 塗りつぶし色
+    label.fontSize = 20;
+    return label;
   }
   
   //回答ボタン（１つ）作成
@@ -166,6 +181,8 @@ function make_black(obj, w, h, a, grid_x, grid_y){
       make_wrong(obj);
     }
     list_finished_question.push(origin_question);
+    //DB更新
+    db_update_question(obj, is_correct, origin_question);
     //エフェクト終了待ち
     setTimeout(wait_answer_effect, 1500, obj, group);
   }
@@ -252,7 +269,21 @@ function make_feel_icon(obj, sprite_name){
   sprite.x = 600;
   sprite.y = 634;
 }
+
+function db_select_question(obj, question){
+  var data = {'id':question['id'], 'get_question_num':'get'};
+  question_select_ajax(db_question_url, data);
+}
   
-  
-  
+function db_update_question(obj, is_correct, origin_question){
+  var data;
+  if(is_correct){
+    console.log(origin_question['id']);
+    data = {'id':origin_question['id'], 'pass':'ok'};
+  }
+  else{
+    data = {'id':origin_question['id'], 'pass':'ng'};
+  }
+  ajax(db_question_url, data);
+}
   

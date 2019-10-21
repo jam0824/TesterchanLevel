@@ -73,5 +73,5 @@ elseif(isset($_GET['pass']) && $_GET['pass'] != ''){
 }
 
 $close_flag = mysql_close($link);
-
+echo "{'id':0}";
 ?>

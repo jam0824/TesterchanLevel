@@ -22,7 +22,7 @@ phina.define('Result', {
 
 function db_update_pass(obj, is_clear){
     if(is_clear){
-        ajax(obj, {'pass':'pass'});
+        ajax(db_url, {'pass':'pass'});
     }
 }
 

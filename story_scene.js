@@ -19,7 +19,7 @@ phina.define('Story', {
 });
 
 function db_update_total(obj){
-    ajax(obj, {"total":"total"});
+    ajax(db_url, {"total":"total"});
 }
 
 //背景もフェードさせることで点滅回避
