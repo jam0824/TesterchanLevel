@@ -1,5 +1,11 @@
 <?php
 require('config.php');
+
+$request = isset($_SERVER['HTTP_X_REQUESTED_WITH'])
+     ? strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) : '';
+if($request !== 'xmlhttprequest') exit;
+
+
 header('Content-type: application/json; charset=utf-8');
 if(!isset($_GET['id']) || $_GET['id'] == ''){
     echo 'id exit';

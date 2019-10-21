@@ -1,5 +1,10 @@
 <?php
 require('config.php');
+
+$request = isset($_SERVER['HTTP_X_REQUESTED_WITH'])
+     ? strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) : '';
+if($request !== 'xmlhttprequest') exit;
+
 header('Content-type: application/json; charset=utf-8');
 $link = mysql_connect($sql_url, $user, $pw);
 if (!$link) {
