@@ -72,7 +72,6 @@ function make_black(obj, w, h, a, grid_x, grid_y){
     var group = DisplayElement().addChildTo(obj);
     var question = get_question();
     var ans_no = Math.floor(Math.random() * 4);
-    console.log(question);
     make_question_window(obj, group, 220, question['question']);
     make_question_number_label(obj, group, 47, question_number);
   

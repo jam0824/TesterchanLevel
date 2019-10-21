@@ -82,6 +82,7 @@ var ASSETS = {
             }
         },
     },
+    /*
     sound:{
         'opening_bgm':'src/bgm/opening_bgm.mp3',
         'story_bgm':'src/bgm/story_bgm.mp3',
@@ -98,4 +99,5 @@ var ASSETS = {
         'result_fanfare':'src/se/result_fanfare.mp3',
         'result_fate':'src/se/result_fate.mp3',
     },
+    */
 };

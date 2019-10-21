@@ -7,6 +7,7 @@ phina.define('Story', {
     superClass: 'DisplayScene',
     init: function(option) {
         this.superInit(option);
+        db_update_total(this);
         play_bgm("story_bgm");
         scenario_line = 0;
         this.backgroundColor = 'black';
@@ -16,6 +17,10 @@ phina.define('Story', {
         main_obj = this;
     },
 });
+
+function db_update_total(obj){
+    ajax(obj, {"total":"total"});
+}
 
 //背景もフェードさせることで点滅回避
 function make_bg(obj, sprite_name, x, y, alpha){

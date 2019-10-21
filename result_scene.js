@@ -8,18 +8,23 @@ phina.define('Result', {
         var sprite_bg = make_bg(this, 'result_bg', 0, 0, 0.05);
         var fade = make_result_fade_in(this, 'white', 0.05);
         char = make_charactor(this, 'kyun_egao_kotti',this.gridX.center(), 984, 0.1);
-        //make_small_number(this, CLEAR_QUESTION_NUMBER, 265, 275, 90);
-        //text = String(correct_num) + '/' + String(FINISH_QUESTION_NUMBER);
-        make_small_number(this, 26, 265, 275, 90);
-        text = "37/40";
-        setTimeout(make_large_number, 2000, this, text, 660, 140, -1);
 
+        make_small_number(this, CLEAR_QUESTION_NUMBER, 265, 275, 90);
+        text = String(correct_num) + '/' + String(FINISH_QUESTION_NUMBER);
+        setTimeout(make_large_number, 2000, this, text, 660, 140, -1);
         is_clear = (correct_num >= CLEAR_QUESTION_NUMBER) ? true : false;
+        db_update_pass(this, is_clear);
         setTimeout(judge, 5000, this, is_clear);
 
         main_obj = this;
     },
 });
+
+function db_update_pass(obj, is_clear){
+    if(is_clear){
+        ajax(obj, {'pass':'pass'});
+    }
+}
 
 function make_result_fade_in(obj, fill_color, alpha){
     var sprite = FadeIn(alpha, fill_color).addChildTo(obj);
