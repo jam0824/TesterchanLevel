@@ -1,0 +1,34 @@
+.content_lp{
+    width: 750px;
+    margin: auto;
+}
+.image_top{
+    margin-bottom: 20px;
+}
+.lp_button{
+    margin: 20px;
+    text-align: center;
+}
+.column_left{
+    float: left;
+    width:350px;
+    margin-top: 20px;
+}
+.column_left img{
+    width:300px;
+}
+.column_right{
+    float: left;
+    width: 400px;
+    margin-top: 20px;
+    color: #5a4e46;
+    font-size: 20px;
+}
+.column_clear{
+    clear:both;
+}
+.lp_message{
+    color: #5a4e46;
+    font-size: 20px;
+    margin: 20px;
+}

@@ -1,0 +1,115 @@
+<!doctype html>
+
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <link href="./src/css/lp_css.css" rel="stylesheet">
+    <link href="./src/css/present_css.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>
+        $(function(){
+            $.ajax({
+                type: "GET",
+                url: "./server/get_count.php",
+                data: {'get_count':'total'},
+                crossDomain: false,
+                dataType : "json",
+                scriptCharset: 'utf-8'
+            }).done(function(data){
+                var str = "Tester-chan Level 受験数：" + data.int_total_count + " / 合格数：" + data.int_pass_count;
+                document.getElementById("pass_rate").innerHTML = str;
+
+            }).fail(function(XMLHttpRequest, textStatus, errorThrown){
+                console.error(errorThrown);
+            });
+        });
+    </script>
+
+    <title>テスターちゃんレベル試験</title>
+  </head>
+  <body>
+
+    <div class="content_lp">
+      <div class="image_top">
+        <img src="./src/lp/lp_top.jpg">
+      </div>
+      <div class="lp_button">
+        <a href="index.html">
+            <img src="./src/lp/button_test_start.png">
+        </a>
+      </div>
+
+      <div class="black_label" id="pass_rate">
+          総受験数100 / 合格数98
+      </div>
+
+      <div class="column_all">
+        <div class="column_left">
+          <img src="./src/lp/image01.png">
+        </div>
+        <div class="column_right">
+          JSTQB非公認「Tester-chan Level」とは<br>
+          ソフトウェアテストの基本用語、事項の試験です。<br>
+          全部で20問出題されます。<br>
+          14問正解で合格です。<br>
+          あなたの腕試しにチャレンジしてみてはいかがでしょう。<br>
+        </div>
+        <div class="column_clear"></div>
+      </div>
+
+      <div class="black_label">
+          待ち受け画面プレゼント！（全7種）
+      </div>
+
+      <div class="column_all">
+          <div class="column_left">
+            <img src="./src/lp/image02.png">
+          </div>
+          <div class="column_right">
+            合格者には最後の画面で<br>
+            「待ち受け画面」のリンクがランダムで1種表示されます。<br>
+            16:9(1920x1080)、19:9(2436x1125)を用意しています。<br>
+          </div>
+          <div class="column_clear"></div>
+        </div>
+
+        <div class="black_label">
+            問題募集中！
+        </div>
+
+        <div class="lp_message">
+            テスターちゃんレベルの問題も募集しています！<br>
+            編集可でスプレッドシートを公開しますので「書きたい！」と言う人がいましたら是非！<br>
+            （まつのチェックが入ってからシステムに導入します）<br>
+            <a href="https://docs.google.com/spreadsheets/d/1ZLzzoJnL3IlYzVTYWbQpN0ZQGndZWiNf5Q3gPF3oPZ0/edit?usp=sharing">テスターちゃん問題スプレッドシート</a>
+          </div>
+
+
+      <div class="black_label">
+          GitHub repository
+      </div>
+
+      <div class="lp_message">
+        以下、githubのリポジトリのリンクです。
+        <a href="https://github.com/jam0824/TesterchanLevel">https://github.com/jam0824/TesterchanLevel</a>
+      </div>
+
+      <div class="black_label">
+          テスターちゃん紙の本/電子書籍販売中！
+      </div>
+      <div class="lp_message">
+        <center>
+          <a href="https://testerchan.booth.pm/">
+            <img src="./src/lp/testerchan01.png">
+          </a>
+        </center>
+      </div>
+
+
+    </div>
+
+  </body>
+</html>

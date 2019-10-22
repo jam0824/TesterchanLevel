@@ -124,7 +124,7 @@ function make_black(obj, w, h, a, grid_x, grid_y){
   }
   //正答率ラベル作成
   function make_pass_rate_label(obj, x, y){
-    var label = Label(text).addChildTo(obj);
+    var label = Label("正答率-%").addChildTo(obj);
     label.x = x;
     label.y = y;
     label.fill = '#fedc60'; // 塗りつぶし色

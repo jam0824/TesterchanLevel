@@ -1,7 +1,7 @@
 var SCREEN_WIDTH = 750;
 var SCREEN_HEIGHT = 1334;
-var FINISH_QUESTION_NUMBER = 10;
-var CLEAR_QUESTION_NUMBER = 6;
+var FINISH_QUESTION_NUMBER = 20;
+var CLEAR_QUESTION_NUMBER = 14;
 var question_number = 0;
 var char;
 var correct_num = 0;

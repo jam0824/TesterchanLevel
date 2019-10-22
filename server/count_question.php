@@ -41,7 +41,8 @@ if($row['COUNT(*)'] == 0){
         echo 'カウントクエリーが失敗しました。'.mysql_error();
         die('カウントクエリーが失敗しました。'.mysql_error());
     }
-    echo "{'id':" . $_GET['id'] . ", 'total_question_count':0, 'pass_question_count':0}";
+    $text = "{id:" . $_GET['id'] . ", total_question_count:0, pass_question_count:0}";
+    echo json_encode($text);
     $close_flag = mysql_close($link);
     exit();
 }

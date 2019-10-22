@@ -1,0 +1,52 @@
+<!doctype html>
+
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <link href="./src/css/lp_css.css" rel="stylesheet">
+    <link href="./src/css/present_css.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>
+      function convert(){
+        var return_value = "";
+        var text = document.getElementById("moto").value;
+          alert(text);
+
+          var list_text = text.split("\n");
+
+          for(var i = 0; i < list_text.length; i++){
+            var list_line = list_text[i].split(",");
+            if(list_line == '') continue;
+            var s =
+            "{" +
+            "'id':" + list_line[0] + "," +
+            "'type':'4taku','genre':'基礎'," +
+            "'question':'" + list_line[1] + "'," +
+            "'correct':'" + list_line[2] + "'," +
+            "'wrong':'" + list_line[3] + "," + list_line[4] + "," + list_line[5] + "'," +
+            "'explain':'" + list_line[6] + "'" +
+            "},\n";
+            return_value += s;
+          }
+          document.getElementById("ato").value = return_value;
+      }
+    </script>
+
+    <title>テスターちゃんレベル試験</title>
+  </head>
+  <body>
+    <textarea id="moto" col="240" row="30">
+
+    </textarea>
+
+    <textarea id="ato" col="240" row="30">
+
+    </textarea>
+
+    <button onclick="convert()">変換</button>
+
+  </body>
+</html>

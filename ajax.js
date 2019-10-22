@@ -54,7 +54,12 @@ function change_pass_rate_label(data){
     else{
         num = data.pass_question_count / data.total_question_count * 100;
     }
-    text = "正答率" + String(num.toFixed(1)) + "%";
+    if(isNaN(num)){
+        text = "正答率0%";
+    }
+    else{
+        text = "正答率" + String(num.toFixed(1)) + "%";
+    }
     console.log(text);
     rate_label.text = text;
 }
