@@ -19,7 +19,7 @@ function get_present_dom(url_16, url_19){
         '16:9'+
         '</div>'+
         '<div class="present_image" id="image_16">'+
-        '<a href="' + url_16 + '">'+
+        '<a target="_blank" href="' + url_16 + '">'+
         '<img src="' + url_16 + '">'+
         '</a>'+
         '</div>'+
@@ -27,7 +27,7 @@ function get_present_dom(url_16, url_19){
         '19:9'+
         '</div>'+
         '<div class="present_image" id="image_19">'+
-        '<a href="' + url_19 + '">'+
+        '<a target="_blank" href="' + url_19 + '">'+
         '<img src="' + url_19 + '">'+
         '</a>'+
         '</div>'+
