@@ -64,7 +64,7 @@ function make_top_button(obj, x, y){
 }
 
 function share_twitter(text){
-    url = 'http://twitter.com/share?url=http://milk0824.sakura.ne.jp/services/testerchanquiz/top.html&text=' + text + '&hashtags=#テスターちゃん';
+    url = 'http://twitter.com/share?url=https://bit.ly/33R4T3F&text=' + text + '&hashtags=#テスターちゃん';
     window.open(encodeURI(url));
 }
 
