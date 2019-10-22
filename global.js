@@ -8,7 +8,11 @@ var correct_num = 0;
 var wrong_num = 0;
 var is_tap_ok = false;
 var is_sound = true;
+var is_clear = false;
 var main_obj;
+
+var url_16 = "";
+var url_19 = "";
 
 var ASSETS = {
     image:{
@@ -52,6 +56,7 @@ var ASSETS = {
     'top_button01':'src/asset/button_top01.png',
     'top_button02':'src/asset/button_top02.png',
     'check_button01':'src/asset/button_check01.png',
+    'present_button01':'src/asset/button_present01.png',
     'kyun_egao':'src/char/kyun_egao.png',
     'kyun_egao_kotti':'src/char/kyun_egao_kotti.png',
     'kyun_egao_metoji':'src/char/kyun_egao_metoji.png',
@@ -82,7 +87,6 @@ var ASSETS = {
             }
         },
     },
-    /*
     sound:{
         'opening_bgm':'src/bgm/opening_bgm.mp3',
         'story_bgm':'src/bgm/story_bgm.mp3',
@@ -99,5 +103,4 @@ var ASSETS = {
         'result_fanfare':'src/se/result_fanfare.mp3',
         'result_fate':'src/se/result_fate.mp3',
     },
-    */
 };

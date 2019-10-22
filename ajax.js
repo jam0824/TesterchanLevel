@@ -30,6 +30,22 @@ function question_select_ajax(url, param){
     });
 }
 
+function present_ajax(url, param){
+    $.ajax({
+        type: "GET",
+        url: url,
+        data: param,
+        crossDomain: false,
+        dataType : "json",
+        scriptCharset: 'utf-8'
+    }).done(function(data){
+        url_16 = data.small;
+        url_19 = data.large;
+    }).fail(function(XMLHttpRequest, textStatus, errorThrown){
+        console.error(errorThrown);
+    });
+}
+
 function change_pass_rate_label(data){
     var num = 0;
     if(data.total_question_count == 0){

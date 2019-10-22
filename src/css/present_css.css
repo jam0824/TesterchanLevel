@@ -1,0 +1,37 @@
+
+.present_main{
+    width:750px;
+    margin: auto;
+}
+.present_message{
+    background-image: url("../asset/select_wnd.png");
+    width:700px;
+    height:200px;
+    margin: 20px;
+    padding: 20px;
+    text-align: left;
+    color: #5a4e46;
+    font-size: 20px;
+}
+
+.black_label{
+    background-image: url("../asset/black_label.png");
+    width: 750px;
+    height: 50px;
+    color: #fedc60;
+    font-size: 30px;
+    text-align: center;
+    font-weight: bold;
+}
+.present_image{
+    margin: 20px;
+    text-align: center;
+}
+
+.present_image img{
+    width: 400px;
+}
+
+.present_button{
+    text-align: center;
+}
