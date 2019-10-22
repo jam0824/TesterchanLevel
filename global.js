@@ -8,6 +8,7 @@ var correct_num = 0;
 var wrong_num = 0;
 var is_tap_ok = false;
 var is_sound = true;
+var sound_path = "";
 var is_clear = false;
 var main_obj;
 
@@ -29,6 +30,8 @@ var ASSETS = {
     'opening_bg':'src/asset/opening.jpg',
     'opening_button01':'src/asset/button_start01.png',
     'opening_button02':'src/asset/button_start02.png',
+    'sound_button01':'src/asset/button_sound01.png',
+    'sound_button02':'src/asset/button_sound02.png',
     'opening_jump':'src/asset/openning_jump.png',
     'skip_button01':'src/asset/button_skip01.png',
     'skip_button02':'src/asset/button_skip02.png',

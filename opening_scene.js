@@ -11,6 +11,7 @@ phina.define('Opening', {
         sprite.y = this.gridY.center(4);
         var rect = make_black(this, SCREEN_WIDTH, 150, 0.5, 0, 5);
         var select = make_opening_button(this, 5);
+        var sound_button = make_sound_button(this, this.gridX.center(-6), this.gridY.center(7));
         main_obj = this;
     },
 });
@@ -30,6 +31,7 @@ function make_opening_button(obj, grid_y){
 
     return select;
 }
+
 
 function fade(obj, fill_color, alpha){
     var fadeout = FadeOut(alpha, fill_color).addChildTo(obj);

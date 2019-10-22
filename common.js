@@ -68,6 +68,7 @@ function play_se(se_name){
 }
 
 function play_bgm(bgm_name){
+    sound_path = bgm_name;
     try {
         if(is_sound){
             SoundManager.playMusic(bgm_name);
@@ -83,4 +84,33 @@ function stop_bgm(){
     } catch(e) {
         console.log( e.message );
     }
+}
+
+function make_sound_button(obj, x, y){
+    var sprite;
+    if(is_sound){
+        sprite = Sprite('sound_button01').addChildTo(obj);
+    }
+    else{
+        sprite = Sprite('sound_button02').addChildTo(obj);
+    }
+    sprite.x = x;
+    sprite.y = y;
+    sprite.setInteractive(true);
+    sprite.onpointend = function(e){
+        make_hit(obj, Number(e.pointer.x), Number(e.pointer.y));
+
+        if(is_sound){
+            is_sound = false;
+            sprite.setImage('sound_button02');
+            stop_bgm();
+        }
+        else{
+            is_sound = true;
+            play_se('story_msg');
+            sprite.setImage('sound_button01');
+            play_bgm(sound_path);
+        }    
+    };
+    return sprite;
 }
