@@ -1,5 +1,4 @@
-var url_16 = "./server/presents/16/1_16_9.png";
-var url_19 = "./server/presents/19/1_19_9.png";
+
 
 phina.define('Share', {
     superClass: 'DisplayScene',
@@ -65,7 +64,7 @@ function make_top_button(obj, x, y){
 }
 
 function share_twitter(text){
-    url = 'http://twitter.com/share?url=http://testerchan.hatenadiary.com/&text=' + text + '&hashtags=#テスターちゃん';
+    url = 'http://twitter.com/share?url=http://milk0824.sakura.ne.jp/services/testerchanquiz/top.html&text=' + text + '&hashtags=#テスターちゃん';
     window.open(encodeURI(url));
 }
 

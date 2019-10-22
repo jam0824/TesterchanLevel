@@ -43,5 +43,11 @@ phina.main(function() {
   });
   //load_sound_assets();
   // アプリケーション実行
+  app.domElement.addEventListener('touchend', function dummy() {
+    var s = phina.asset.Sound();
+    s.loadFromBuffer();
+    s.play().stop();
+    app.domElement.removeEventListener('touchend', dummy);
+  });
   app.run();
 });
