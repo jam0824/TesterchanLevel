@@ -5,7 +5,7 @@ phina.globalize();
 // メイン処理
 phina.main(function() {
   // アプリケーション生成
-  
+  console.log('VERSION' + VERSION);
   var app = GameApp({
     query: '#game',
     startLabel: 'opening', // メインシーンから開始する
