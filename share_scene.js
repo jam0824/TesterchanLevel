@@ -16,25 +16,27 @@ phina.define('Share', {
 
 //プレゼントurl取得
 function get_present_ajax(){
+    if(IS_LOCAL) return;
     if(is_clear){
         present_ajax(db_present_url, {'present':'p'});
     }
 }
 
 function show_share_screen(obj){
-    var name_label = make_name_label(obj, 120, 175, "Twitterシェア");
-
-    result = (correct_num >= CLEAR_QUESTION_NUMBER) ? "合格" : "不合格";
-    text = "ソフトウェアテスト知識試験テスターちゃんレベルで" + correct_num + "/" + FINISH_QUESTION_NUMBER + "の成績で" + result + "でした。かかった時間は" + time_label + "でした。";
-    var label = make_story_label(obj, 50, 270, new_line(text, 20));
-    
-    var twitter_icon = make_twitter_icon(obj, obj.gridX.center(), obj.gridY.center(-1), text);
     var button = make_top_button(obj, obj.gridX.center(4), 1250);
     var check = make_check_button(obj, obj.gridX.center(-4), 1250);
-    
-    if(is_clear){
-        var present = make_present_button(obj, obj.gridX.center(), 1000);
+
+    if(!IS_LOCAL){
+        var name_label = make_name_label(obj, 120, 175, "Twitterシェア");
+        result = (correct_num >= CLEAR_QUESTION_NUMBER) ? "合格" : "不合格";
+        text = "ソフトウェアテスト知識試験テスターちゃんレベルで" + correct_num + "/" + FINISH_QUESTION_NUMBER + "の成績で" + result + "でした。かかった時間は" + time_label + "でした。";
+        var label = make_story_label(obj, 50, 270, new_line(text, 20));
+        var twitter_icon = make_twitter_icon(obj, obj.gridX.center(), obj.gridY.center(-1), text);
+        if(is_clear){
+            var present = make_present_button(obj, obj.gridX.center(), 1000);
+        }
     }
+    
 }
 
 function make_twitter_icon(obj, x, y, text){

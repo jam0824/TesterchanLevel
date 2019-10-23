@@ -124,6 +124,7 @@ function make_black(obj, w, h, a, grid_x, grid_y){
   }
   //正答率ラベル作成
   function make_pass_rate_label(obj, x, y){
+    if(IS_LOCAL) return null;
     var label = Label("正答率-%").addChildTo(obj);
     label.x = x;
     label.y = y;
@@ -271,11 +272,13 @@ function make_feel_icon(obj, sprite_name){
 }
 
 function db_select_question(obj, question){
+  if(IS_LOCAL) return;
   var data = {'id':question['id'], 'get_question_num':'get'};
   question_select_ajax(db_question_url, data);
 }
   
 function db_update_question(obj, is_correct, origin_question){
+  if(IS_LOCAL) return;
   var data;
   if(is_correct){
     console.log(origin_question['id']);

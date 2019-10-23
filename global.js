@@ -1,8 +1,10 @@
-var VERSION = "1.0.0.2";
+var IS_LOCAL = true;
+
+var VERSION = "1.0.1.0";
 var SCREEN_WIDTH = 750;
 var SCREEN_HEIGHT = 1334;
-var FINISH_QUESTION_NUMBER = 20;
-var CLEAR_QUESTION_NUMBER = 14;
+var FINISH_QUESTION_NUMBER = 3;
+var CLEAR_QUESTION_NUMBER = 1;
 var question_number = 0;
 var char;
 var correct_num = 0;
@@ -91,20 +93,21 @@ var ASSETS = {
             }
         },
     },
-    sound:{
-        'opening_bgm':'src/bgm/opening_bgm.mp3',
-        'story_bgm':'src/bgm/story_bgm.mp3',
-        'quiz_bgm':'src/bgm/quiz_bgm.mp3',
-        'result_bgm':'src/bgm/result_bgm.ogg',
-        'opening_decision':'src/se/opening_decision.ogg',
-        'story_msg':'src/se/story_msg.mp3',
-        'quiz_select':'src/se/quiz_select.mp3',
-        'quiz_correct':'src/se/quiz_correct.mp3',
-        'quiz_wrong':'src/se/quiz_wrong.mp3',
-        'result_goukaku':'src/se/result_goukaku.mp3',
-        'result_don':'src/se/result_don.mp3',
-        'result_bishi':'src/se/result_bishi.mp3',
-        'result_fanfare':'src/se/result_fanfare.mp3',
-        'result_fate':'src/se/result_fate.mp3',
-    },
+    
+};
+var SOUND_ASSETS = {
+    'opening_bgm':'src/bgm/opening_bgm.mp3',
+    'story_bgm':'src/bgm/story_bgm.mp3',
+    'quiz_bgm':'src/bgm/quiz_bgm.mp3',
+    'result_bgm':'src/bgm/result_bgm.ogg',
+    'opening_decision':'src/se/opening_decision.ogg',
+    'story_msg':'src/se/story_msg.mp3',
+    'quiz_select':'src/se/quiz_select.mp3',
+    'quiz_correct':'src/se/quiz_correct.mp3',
+    'quiz_wrong':'src/se/quiz_wrong.mp3',
+    'result_goukaku':'src/se/result_goukaku.mp3',
+    'result_don':'src/se/result_don.mp3',
+    'result_bishi':'src/se/result_bishi.mp3',
+    'result_fanfare':'src/se/result_fanfare.mp3',
+    'result_fate':'src/se/result_fate.mp3',
 };

@@ -19,6 +19,7 @@ phina.define('Story', {
 });
 
 function db_update_total(obj){
+    if(IS_LOCAL) return;
     ajax(db_url, {"total":"total"});
 }
 

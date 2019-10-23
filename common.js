@@ -58,6 +58,7 @@ function add_zero(num){
 }
 
 function play_se(se_name){
+    if(IS_LOCAL) return null;
     try {
         if(is_sound){
             SoundManager.play(se_name);
@@ -69,6 +70,7 @@ function play_se(se_name){
 
 function play_bgm(bgm_name){
     sound_path = bgm_name;
+    if(IS_LOCAL) return null;
     try {
         if(is_sound){
             SoundManager.playMusic(bgm_name);
@@ -79,6 +81,7 @@ function play_bgm(bgm_name){
 }
 
 function stop_bgm(){
+    if(IS_LOCAL) return null;
     try {
         SoundManager.stopMusic();
     } catch(e) {
@@ -87,6 +90,8 @@ function stop_bgm(){
 }
 
 function make_sound_button(obj, x, y){
+    if(IS_LOCAL) return null;
+
     var sprite;
     if(is_sound){
         sprite = Sprite('sound_button01').addChildTo(obj);

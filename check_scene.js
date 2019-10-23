@@ -7,8 +7,10 @@ function insert_dom(list_finished_question){
 }
 
 function add_top_button(content){
+    var url = (IS_LOCAL) ? 'local_index.html' : 'index.html'
+
     content += '<center>';
-    content += '<a href="index.html">';
+    content += '<a href="' + url + '">';
     content += '<img src="src/asset/button_top01.png">';
     content += '</a></center>';
     return content;
