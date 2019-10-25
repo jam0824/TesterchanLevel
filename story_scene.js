@@ -32,7 +32,7 @@ function show_story_window(obj){
     char = make_charactor(obj, 'rin_normal', obj.gridX.center(1), obj.gridY.center(1), 0.1);
     var window = make_story_window(obj, 4);
     var skip_button = make_skip_button(obj, 640, 50);
-    var name_label = make_name_label(obj, 20, 774, "凛太朗");
+    var name_label = make_label(obj, "凛太朗", 20, 20, 774,'#fedc60');
     label = make_story_label(obj, LABEL_X, LABEL_Y, "");
     scenario_line = next_messege(obj, scenario_line);
 }
@@ -96,9 +96,3 @@ function make_skip_button(obj, x, y){
     };
     return button;
 }
-
- //なまえラベル作成
- function make_name_label(obj, x, y, text){
-    var label = make_label(obj, text, 20, x, y,'#fedc60');
-    return label;
-  }

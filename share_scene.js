@@ -46,6 +46,9 @@ function make_twitter_icon(obj, x, y, text){
     button.y = y;
     button.setInteractive(true);
     button.onpointend = function(e){
+        if(is_ios_and_safari()){
+            alert("iOSのsafariの場合、Twitterシェアをするためには設定のポップアップブロックを解除する必要があります。");
+        }
         make_hit(obj, Number(e.pointer.x), Number(e.pointer.y));
         share_twitter(text);
     };
@@ -91,4 +94,11 @@ function make_present_button(obj, x, y){
         insert_present_dom(url_16, url_19);
     };
     return button;
+}
+
+function is_ios_and_safari(){
+    var ua = window.navigator.userAgent;
+    is_IOS = /[ \(]iP/.test(ua);
+    is_safari = (ua.toLowerCase().indexOf('safari')) ? true : false;
+    return ((is_IOS) && (is_safari)) ? true : false;
 }

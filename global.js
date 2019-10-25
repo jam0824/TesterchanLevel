@@ -1,9 +1,9 @@
 var IS_LOCAL = false;
 
 //出題問題数
-var FINISH_QUESTION_NUMBER = 3;
+var FINISH_QUESTION_NUMBER = 20;
 //合格問題数
-var CLEAR_QUESTION_NUMBER = 1;
+var CLEAR_QUESTION_NUMBER = 14;
 
 var VERSION = "1.0.1.0";
 var SCREEN_WIDTH = 750;

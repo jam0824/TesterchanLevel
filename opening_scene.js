@@ -12,6 +12,7 @@ phina.define('Opening', {
         var rect = make_black(this, SCREEN_WIDTH, 150, 0.5, 0, 5);
         var select = make_opening_button(this, 5);
         var sound_button = make_sound_button(this, this.gridX.center(-6), this.gridY.center(7));
+        var label = make_version_label(this);
         main_obj = this;
     },
 });
@@ -38,6 +39,10 @@ function fade(obj, fill_color, alpha){
     fadeout.x = obj.gridX.center();
     fadeout.y = obj.gridY.center();
     return fadeout;
+}
+
+function make_version_label(obj){
+    return make_label(obj, "Ver." + VERSION, 20, 620, 1300,"#000000", 20)
 }
 
 
