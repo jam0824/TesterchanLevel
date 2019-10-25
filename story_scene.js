@@ -16,7 +16,7 @@ phina.define('Story', {
 });
 
 function db_update_total(obj){
-    if(IS_LOCAL) return;
+    if((IS_LOCAL)||(IS_OTHER_QUIZ)) return;
     ajax(db_url, {"total":"total"});
 }
 
@@ -32,7 +32,7 @@ function show_story_window(obj){
     char = make_charactor(obj, 'rin_normal', obj.gridX.center(1), obj.gridY.center(1), 0.1);
     var window = make_story_window(obj, 4);
     var skip_button = make_skip_button(obj, 640, 50);
-    var name_label = make_label(obj, "凛太朗", 20, 20, 774,'#fedc60');
+    var name_label = make_label(obj, STORY_CHAR_NAME, 20, 20, 774,'#fedc60');
     label = make_story_label(obj, LABEL_X, LABEL_Y, "");
     scenario_line = next_messege(obj, scenario_line);
 }

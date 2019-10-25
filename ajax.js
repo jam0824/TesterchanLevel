@@ -1,5 +1,5 @@
 function ajax(url, param){
-    if(IS_LOCAL) return;
+    if((IS_LOCAL)||(IS_OTHER_QUIZ)) return;
     $.ajax({
         type: "GET",
         url: url,
@@ -16,7 +16,7 @@ function ajax(url, param){
 
 
 function question_select_ajax(url, param){
-    if(IS_LOCAL) return;
+    if((IS_LOCAL)||(IS_OTHER_QUIZ)) return;
     $.ajax({
         type: "GET",
         url: url,
@@ -33,7 +33,7 @@ function question_select_ajax(url, param){
 }
 
 function present_ajax(url, param){
-    if(IS_LOCAL) return;
+    if((IS_LOCAL)||(IS_OTHER_QUIZ)) return;
     $.ajax({
         type: "GET",
         url: url,

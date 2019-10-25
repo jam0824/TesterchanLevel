@@ -82,13 +82,14 @@ function init_global_value(){
   
   //第n問ラベル作成
   function make_question_number_label(obj, group, y, number){
-    text = "第" + number + "問"
-    var label = make_label(group, text, 20, obj.gridX.center(-1), y,'#fedc60');
+    text = number + "/" + FINISH_QUESTION_NUMBER + "問目";
+    var label = make_label(group, text, 20, obj.gridX.center(), y,'#fedc60');
+    label.align = 'center';
     return label;
   }
   //正答率ラベル作成
   function make_pass_rate_label(obj, x, y){
-    if(IS_LOCAL) return null;
+    if((IS_LOCAL)||(IS_OTHER_QUIZ)) return null;
     var label = make_label(obj, "正答率-%", 20, x, y,'#fedc60', 20);
     return label;
   }
@@ -228,13 +229,13 @@ function make_feel_icon(obj, sprite_name){
 }
 
 function db_select_question(obj, question){
-  if(IS_LOCAL) return;
+  if((IS_LOCAL)||(IS_OTHER_QUIZ)) return;
   var data = {'id':question['id'], 'get_question_num':'get'};
   question_select_ajax(db_question_url, data);
 }
   
 function db_update_question(obj, is_correct, origin_question){
-  if(IS_LOCAL) return;
+  if((IS_LOCAL)||(IS_OTHER_QUIZ)) return;
   var data;
   if(is_correct){
     console.log(origin_question['id']);

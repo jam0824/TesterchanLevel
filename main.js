@@ -1,3 +1,5 @@
+var VERSION = "1.0.2.0";
+
 // phina.js をグローバル領域に展開
 phina.globalize();
 

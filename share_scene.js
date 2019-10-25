@@ -16,7 +16,7 @@ phina.define('Share', {
 
 //プレゼントurl取得
 function get_present_ajax(){
-    if(IS_LOCAL) return;
+    if((IS_LOCAL)||(IS_OTHER_QUIZ)) return;
     if(is_clear){
         present_ajax(db_present_url, {'present':'p'});
     }
@@ -27,20 +27,16 @@ function show_share_screen(obj){
     var check = make_check_button(obj, obj.gridX.center(-4), 1250);
 
     result = (correct_num >= CLEAR_QUESTION_NUMBER) ? "合格" : "不合格";
-    text = "ソフトウェアテスト知識試験テスターちゃんレベルで" + correct_num + "/" + FINISH_QUESTION_NUMBER + "の成績で" + result + "でした。かかった時間は" + time_label + "でした。";
+    text = QUIZ_NAME + "で" + correct_num + "/" + FINISH_QUESTION_NUMBER + "の成績で" + result + "でした。かかった時間は" + time_label + "でした。";
     var label = make_label(obj, text, 20, 50, 270, '#5a4e46');
 
     if(!IS_LOCAL){
         var name_label = make_label(obj, "Twitterシェア", 20, 120, 175, '#fedc60');
         var twitter_icon = make_twitter_icon(obj, obj.gridX.center(), obj.gridY.center(-1), text);
-        if(is_clear){
+        if((is_clear)&&(!IS_OTHER_QUIZ)){
             var present = make_present_button(obj, obj.gridX.center(), 1000);
         }
     }
-    else{
-
-    }
-    
 }
 
 function make_twitter_icon(obj, x, y, text){
@@ -72,7 +68,7 @@ function make_top_button(obj, x, y){
 }
 
 function share_twitter(text){
-    url = 'http://twitter.com/share?url=https://bit.ly/33R4T3F&text=' + text + '&hashtags=#テスターちゃん';
+    url = 'http://twitter.com/share?url=' + SHARE_URL + '&text=' + text;
     window.open(encodeURI(url));
 }
 

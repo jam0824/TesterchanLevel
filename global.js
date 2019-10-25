@@ -1,11 +1,17 @@
+//ローカル実行のときにtrue(サーバーとコネクトしない＆音楽読み込まない)
 var IS_LOCAL = false;
+
+//違う内容のクイズをやるとき（サーバーとのコネクトしない)
+var IS_OTHER_QUIZ = false;
 
 //出題問題数
 var FINISH_QUESTION_NUMBER = 20;
 //合格問題数
 var CLEAR_QUESTION_NUMBER = 14;
 
-var VERSION = "1.0.1.0";
+var VERSION = "1.0.2.0";
+var QUIZ_NAME = "ソフトウェアテスト知識試験テスターちゃんレベル";
+var SHARE_URL = "https://bit.ly/33R4T3F";
 var SCREEN_WIDTH = 750;
 var SCREEN_HEIGHT = 1334;
 var question_number = 0;
@@ -19,6 +25,7 @@ var is_clear = false;
 var main_obj;
 
 //story
+var STORY_CHAR_NAME = "凛太朗";
 var LABEL_X = 50;
 var LABEL_Y = 900;
 var label = "";

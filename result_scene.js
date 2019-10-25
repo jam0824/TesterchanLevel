@@ -21,7 +21,7 @@ phina.define('Result', {
 });
 
 function db_update_pass(obj, is_clear){
-    if(IS_LOCAL) return null;
+    if((IS_LOCAL)||(IS_OTHER_QUIZ)) return null;
     if(is_clear){
         ajax(db_url, {'pass':'pass'});
     }
