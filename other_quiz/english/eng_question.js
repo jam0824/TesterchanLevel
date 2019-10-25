@@ -7908,7 +7908,7 @@ var question_db = [
     {'id':7907,'type':'4taku','genre':'基礎','question':'熱の','correct':'thermal','wrong':'printing,flattering,periphery','explain':'熱の : thermal'},
     {'id':7908,'type':'4taku','genre':'基礎','question':'サーモスタット','correct':'thermostat','wrong':'cardiac,meander,anonymous','explain':'サーモスタット : thermostat'},
     {'id':7909,'type':'4taku','genre':'基礎','question':'皮紐','correct':'thong','wrong':'temptation,chirp,muddy','explain':'皮紐 : thong'},
-    {'id':7910,'type':'4taku','genre':'基礎','question':'1','correct':'thou','wrong':'approximately,nearly,absence','explain':'1 : thou'},
+    {'id':7910,'type':'4taku','genre':'基礎','question':'なんじは、そなたは','correct':'thou','wrong':'approximately,nearly,absence','explain':'なんじは、そなたは : thou'},
     {'id':7911,'type':'4taku','genre':'基礎','question':'群衆','correct':'throng','wrong':'user,despair,protective','explain':'群衆 : throng'},
     {'id':7912,'type':'4taku','genre':'基礎','question':'ツグミ','correct':'thrush','wrong':'infinite,toil,engender','explain':'ツグミ : thrush'},
     {'id':7913,'type':'4taku','genre':'基礎','question':'をゴツンとたたく','correct':'thump','wrong':'organizational,fable,discontent','explain':'をゴツンとたたく : thump'},

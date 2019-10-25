@@ -11,7 +11,7 @@ var CLEAR_QUESTION_NUMBER = 7;
 
 
 var QUIZ_NAME = "テスターちゃん英単語知識試験";
-var SHARE_URL = "https://bit.ly/33R4T3F";
+var SHARE_URL = "https://tinyurl.com/y4u6hdjs";
 var SCREEN_WIDTH = 750;
 var SCREEN_HEIGHT = 1334;
 var question_number = 0;
@@ -112,9 +112,9 @@ var ASSETS = {
     
 };
 var SOUND_ASSETS = {
-    'opening_bgm':'../../src/bgm/opening_bgm.mp3',
-    'story_bgm':'../../src/bgm/story_bgm.mp3',
-    'quiz_bgm':'../../src/bgm/quiz_bgm.mp3',
+    'opening_bgm':'src/bgm/game_maoudamashii_8_orgel06.mp3',
+    'story_bgm':'src/bgm/game_maoudamashii_5_village02.mp3',
+    'quiz_bgm':'src/bgm/game_maoudamashii_5_town17.mp3',
     'result_bgm':'../../src/bgm/result_bgm.mp3',
     'opening_decision':'../../src/se/opening_decision.mp3',
     'story_msg':'../../src/se/story_msg.mp3',
