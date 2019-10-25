@@ -52,8 +52,8 @@ function make_story_window(obj, grid_y){
 
 function next_messege(obj, num){
     if(num < list_scenario.length){
-        text = new_line(list_scenario[num], 20);
-        label.text = text;
+        text = new_line(list_scenario[num], 22);
+        label.text = text_converter(text);
         num++;
     }
     else{
@@ -63,9 +63,15 @@ function next_messege(obj, num){
 }
 
 function make_story_label(obj, x, y, text){
-    var label = make_label(obj, text, 20, x, y,'#5a4e46');
+    
+    var label = make_label(obj, text_converter(text), 22, x, y,'#5a4e46');
     label.lineHeight = 1.5;
     return label;
+}
+function text_converter(text){
+    text = text.replace(/int_total/g, String(FINISH_QUESTION_NUMBER));
+    text = text.replace(/int_pass/g, String(CLEAR_QUESTION_NUMBER));
+    return text;
 }
 
 function make_story_fade_in(obj){

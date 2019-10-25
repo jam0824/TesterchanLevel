@@ -26,16 +26,19 @@ function show_share_screen(obj){
     var button = make_top_button(obj, obj.gridX.center(4), 1250);
     var check = make_check_button(obj, obj.gridX.center(-4), 1250);
 
+    result = (correct_num >= CLEAR_QUESTION_NUMBER) ? "合格" : "不合格";
+    text = "ソフトウェアテスト知識試験テスターちゃんレベルで" + correct_num + "/" + FINISH_QUESTION_NUMBER + "の成績で" + result + "でした。かかった時間は" + time_label + "でした。";
+    var label = make_label(obj, text, 20, 50, 270, '#5a4e46');
+
     if(!IS_LOCAL){
-        result = (correct_num >= CLEAR_QUESTION_NUMBER) ? "合格" : "不合格";
-        text = "ソフトウェアテスト知識試験テスターちゃんレベルで" + correct_num + "/" + FINISH_QUESTION_NUMBER + "の成績で" + result + "でした。かかった時間は" + time_label + "でした。";
-        
         var name_label = make_label(obj, "Twitterシェア", 20, 120, 175, '#fedc60');
-        var label = make_label(obj, text, 20, 50, 270, '#5a4e46');
         var twitter_icon = make_twitter_icon(obj, obj.gridX.center(), obj.gridY.center(-1), text);
         if(is_clear){
             var present = make_present_button(obj, obj.gridX.center(), 1000);
         }
+    }
+    else{
+
     }
     
 }
@@ -46,10 +49,9 @@ function make_twitter_icon(obj, x, y, text){
     button.y = y;
     button.setInteractive(true);
     button.onpointend = function(e){
-        if(is_ios_and_safari()){
-            alert("iOSのsafariの場合、Twitterシェアをするためには設定のポップアップブロックを解除する必要があります。");
-        }
         make_hit(obj, Number(e.pointer.x), Number(e.pointer.y));
+        alert("ポップアップブロックを設定している場合、Twitterシェアをするためにはポップアップブロックを解除する必要があります。");
+        
         share_twitter(text);
     };
     return button;
@@ -98,7 +100,9 @@ function make_present_button(obj, x, y){
 
 function is_ios_and_safari(){
     var ua = window.navigator.userAgent;
-    is_IOS = /[ \(]iP/.test(ua);
-    is_safari = (ua.toLowerCase().indexOf('safari')) ? true : false;
+    console.log(ua);
+    ua = ua.toLowerCase();
+    is_IOS = ((ua.indexOf("iphone") >= 0) || (ua.indexOf("ipad") >= 0) || (navigator.userAgent.indexOf("ipod") >= 0))
+    is_safari = (ua.indexOf('safari')) ? true : false;
     return ((is_IOS) && (is_safari)) ? true : false;
 }

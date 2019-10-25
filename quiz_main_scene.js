@@ -48,7 +48,7 @@ function init_global_value(){
     var ans_no = Math.floor(Math.random() * 4);
     make_question_window(obj, group, 220, question['question']);
     make_question_number_label(obj, group, 47, question_number);
-    rate_label = make_pass_rate_label(obj,obj.gridX.center(3), 47);
+    rate_label = make_pass_rate_label(obj,obj.gridX.center(2), 47);
     //dbからデータ取得
     db_select_question(obj, question);
   
