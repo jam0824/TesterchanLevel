@@ -57,6 +57,50 @@ function add_zero(num){
     }
 }
 
+//黒背景作成
+function make_black(obj, w, h, a, grid_x, grid_y){
+    var rect = RectangleShape({
+        width:w,
+        height:h,
+        strokeWidth:0,
+        fill:'back',
+        cornerRadius:10
+    }).addChildTo(obj);
+    rect.x = obj.gridX.center(grid_x);
+    rect.y = obj.gridY.center(grid_y);
+    rect.alpha = a;
+    return rect;
+}
+
+  
+  //汎用スプライト作成メソッド
+  function make_sprite(obj, sprite_name, x, y){
+    var sprite = Sprite(sprite_name).addChildTo(obj);
+    if((x == 0) && (y == 0)){
+      sprite.x = obj.gridX.center();
+      sprite.y = obj.gridY.center();
+    }
+    else{
+      sprite.x = x;
+      sprite.y = y;
+    }
+    return sprite;
+  }
+
+  //汎用ラベル作成メソッド
+  function make_label(obj, text, line_num, x, y, fill_color, font_size){
+    text = new_line(text, line_num);
+    var label = Label(text).addChildTo(obj);
+    label.x = x;
+    label.y = y;
+    label.fill = fill_color;
+    label.align = 'left';
+    if(font_size != null){
+      label.fontSize = font_size;
+    }
+    return label;
+  }
+
 function play_se(se_name){
     if(IS_LOCAL) return null;
     try {

@@ -1,7 +1,4 @@
-var LABEL_X = 50;
-var LABEL_Y = 900;
-var label = "";
-var scenario_line = 0;
+
 
 phina.define('Story', {
     superClass: 'DisplayScene',
@@ -35,7 +32,7 @@ function show_story_window(obj){
     char = make_charactor(obj, 'rin_normal', obj.gridX.center(1), obj.gridY.center(1), 0.1);
     var window = make_story_window(obj, 4);
     var skip_button = make_skip_button(obj, 640, 50);
-    var name_label = make_name_label(obj, 60, 774, "凛太朗");
+    var name_label = make_name_label(obj, 20, 774, "凛太朗");
     label = make_story_label(obj, LABEL_X, LABEL_Y, "");
     scenario_line = next_messege(obj, scenario_line);
 }
@@ -66,11 +63,7 @@ function next_messege(obj, num){
 }
 
 function make_story_label(obj, x, y, text){
-    var label = Label(text).addChildTo(obj);
-    label.x = x;
-    label.y = y;
-    label.fill = '#5a4e46'; // 塗りつぶし色
-    label.align = 'left';
+    var label = make_label(obj, text, 20, x, y,'#5a4e46');
     label.lineHeight = 1.5;
     return label;
 }
@@ -104,11 +97,8 @@ function make_skip_button(obj, x, y){
     return button;
 }
 
- //第n問ラベル作成
+ //なまえラベル作成
  function make_name_label(obj, x, y, text){
-    var label = Label(text).addChildTo(obj);
-    label.x = x;
-    label.y = y;
-    label.fill = '#fedc60'; // 塗りつぶし色
+    var label = make_label(obj, text, 20, x, y,'#fedc60');
     return label;
   }

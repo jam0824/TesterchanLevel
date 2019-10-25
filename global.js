@@ -1,10 +1,13 @@
-var IS_LOCAL = true;
+var IS_LOCAL = false;
+
+//出題問題数
+var FINISH_QUESTION_NUMBER = 3;
+//合格問題数
+var CLEAR_QUESTION_NUMBER = 1;
 
 var VERSION = "1.0.1.0";
 var SCREEN_WIDTH = 750;
 var SCREEN_HEIGHT = 1334;
-var FINISH_QUESTION_NUMBER = 3;
-var CLEAR_QUESTION_NUMBER = 1;
 var question_number = 0;
 var char;
 var correct_num = 0;
@@ -14,6 +17,12 @@ var is_sound = true;
 var sound_path = "";
 var is_clear = false;
 var main_obj;
+
+//story
+var LABEL_X = 50;
+var LABEL_Y = 900;
+var label = "";
+var scenario_line = 0;
 
 var url_16 = "";
 var url_19 = "";

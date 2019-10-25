@@ -33,35 +33,7 @@ function init_global_value(){
   is_tap_ok = false;
 }
   
-//黒背景作成
-function make_black(obj, w, h, a, grid_x, grid_y){
-    var rect = RectangleShape({
-        width:w,
-        height:h,
-        strokeWidth:0,
-        fill:'back',
-        cornerRadius:10
-    }).addChildTo(obj);
-    rect.x = obj.gridX.center(grid_x);
-    rect.y = obj.gridY.center(grid_y);
-    rect.alpha = a;
-    return rect;
-}
 
-  
-  //汎用スプライト作成メソッド
-  function make_sprite(obj, sprite_name, x, y){
-    var sprite = Sprite(sprite_name).addChildTo(obj);
-    if((x == 0) && (y == 0)){
-      sprite.x = obj.gridX.center();
-      sprite.y = obj.gridY.center();
-    }
-    else{
-      sprite.x = x;
-      sprite.y = y;
-    }
-    return sprite;
-  }
   
   //問題取得
   function get_question(){
@@ -105,31 +77,19 @@ function make_black(obj, w, h, a, grid_x, grid_y){
     var question_window = Sprite('question_window').addChildTo(group);
     question_window.x = obj.gridX.center();
     question_window.y = y;
-    text = new_line(text, 20)
-    var label = Label(text).addChildTo(group);
-    label.x = LABEL_X;
-    label.y = y;
-    label.fill = '#5a4e46'; // 塗りつぶし色
-    label.align = 'left';
+    var label = make_label(group, text, 20, LABEL_X, y,'#5a4e46');
   }
   
   //第n問ラベル作成
   function make_question_number_label(obj, group, y, number){
     text = "第" + number + "問"
-    var label = Label(text).addChildTo(group);
-    label.x = obj.gridX.center();
-    label.y = y;
-    label.fill = '#fedc60'; // 塗りつぶし色
+    var label = make_label(group, text, 20, obj.gridX.center(-1), y,'#fedc60');
     return label;
   }
   //正答率ラベル作成
   function make_pass_rate_label(obj, x, y){
     if(IS_LOCAL) return null;
-    var label = Label("正答率-%").addChildTo(obj);
-    label.x = x;
-    label.y = y;
-    label.fill = '#fedc60'; // 塗りつぶし色
-    label.fontSize = 20;
+    var label = make_label(obj, "正答率-%", 20, x, y,'#fedc60', 20);
     return label;
   }
   
@@ -148,11 +108,7 @@ function make_black(obj, w, h, a, grid_x, grid_y){
         onclick_event(obj, group, is_correct, origin_question, Number(e.pointer.x), Number(e.pointer.y));
       }
     };
-    var label = Label(new_line(text, 16)).addChildTo(group);
-    label.x = obj.gridX.center(-7);
-    label.y = y
-    label.fill = '#5a4e46'; // 塗りつぶし色
-    label.align = 'left';
+    var label = make_label(group, text, 16, obj.gridX.center(-7), y,'#5a4e46');
     return group;
   }
   
