@@ -4,19 +4,24 @@ phina.define('Opening', {
     superClass: 'DisplayScene',
     init: function(option) {
         this.superInit(option);
+        main_obj = this;
         play_bgm("opening_bgm");
+        
         var sprite_bg = make_sprite(this, 'opening_bg', 0, 0);
-        var sprite = OpeningJump().addChildTo(this);
-        sprite.x = this.gridX.center(2);
-        sprite.y = this.gridY.center(4);
+        var sprite = make_jump(this);
         var rect = make_black(this, SCREEN_WIDTH, 150, 0.5, 0, 5);
         var select = make_opening_button(this, 5);
         var sound_button = make_sound_button(this, this.gridX.center(-6), this.gridY.center(7));
         var label = make_version_label(this);
-        main_obj = this;
     },
 });
 
+function make_jump(obj){
+    var sprite = OpeningJump().addChildTo(obj);
+    sprite.x = obj.gridX.center(2);
+    sprite.y = obj.gridY.center(4);
+    return sprite;
+}
 
 function make_opening_button(obj, grid_y){
     var select = make_sprite(obj, 'opening_button01',obj.gridX.center(), obj.gridY.center(grid_y));
@@ -31,7 +36,6 @@ function make_opening_button(obj, grid_y){
     return select;
 }
 
-
 function fade(obj, fill_color, alpha){
     var fadeout = FadeOut(alpha, fill_color).addChildTo(obj);
     fadeout.x = obj.gridX.center();
@@ -42,6 +46,3 @@ function fade(obj, fill_color, alpha){
 function make_version_label(obj){
     return make_label(obj, "Ver." + VERSION, 20, 620, 1300,"#000000", 20)
 }
-
-
-

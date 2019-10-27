@@ -38,10 +38,10 @@ function make_cards(list_finished_question){
 
 function waku(){
     var str =
-    '<div class="contents m-5">' +
-			'<div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">' +
-				'$$cards' +
-			'</div>' +
+        '<div class="contents m-5">' +
+        '<div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">' +
+        '$$cards' +
+        '</div>' +
         '</div>';
     return str;
 }
@@ -49,29 +49,29 @@ function waku(){
 
 function card(){
     var str = 
-    '<div class="card">' +
-    '<div class="card-header $$color" role="tab" id="heading$$number">' +
+        '<div class="card">' +
+        '<div class="card-header $$color" role="tab" id="heading$$number">' +
         '<h5 class="mb-0">' +
-            '<a class="text-body" data-toggle="collapse" href="#collapse$$number" role="button" aria-expanded="false" aria-controls="collapse$$number">'+
-                '<div class="row">'+
-                    '<div class="col-md-1">'+
-                        '$$number問目'+
-                    '</div>'+
-                    '<div class="col-md-6">'+
-                       '$$text'+
-                       '</div>'+
-                       '<div class="col-md-5">'+
-                       '$$result'+
-                       '</div>'+
-                       '</div>'+
-                       '</a>'+
-                       '</h5>'+
-                       '</div><!-- /.card-header -->'+
-                       '<div id="collapse$$number" class="collapse" role="tabpanel" aria-labelledby="heading$$number" data-parent="#accordion">'+
-                       '<div class="card-body">'+
-                       '$$explain'+
-                       '</div><!-- /.card-body -->'+
-                       '</div><!-- /.collapse -->'+
-                       '</div><!-- /.card -->';
+        '<a class="text-body" data-toggle="collapse" href="#collapse$$number" role="button" aria-expanded="false" aria-controls="collapse$$number">'+
+        '<div class="row">'+
+        '<div class="col-md-1">'+
+        '$$number問目'+
+        '</div>'+
+        '<div class="col-md-6">'+
+        '$$text'+
+        '</div>'+
+        '<div class="col-md-5">'+
+        '$$result'+
+        '</div>'+
+        '</div>'+
+        '</a>'+
+        '</h5>'+
+        '</div><!-- /.card-header -->'+
+        '<div id="collapse$$number" class="collapse" role="tabpanel" aria-labelledby="heading$$number" data-parent="#accordion">'+
+        '<div class="card-body">'+
+        '$$explain'+
+        '</div><!-- /.card-body -->'+
+        '</div><!-- /.collapse -->'+
+        '</div><!-- /.card -->';
     return str;
 }
