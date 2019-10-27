@@ -157,3 +157,13 @@ function make_sound_button(obj, x, y){
     };
     return sprite;
 }
+
+function hidden_geme(){
+    var target = document.getElementById("main").style.display = "none";
+    var other = document.getElementById("other").style.display = "inline";
+}
+
+function return_game(){
+    var other = document.getElementById("other").style.display = "none";
+    var target = document.getElementById("main").style.display = "inline";
+}

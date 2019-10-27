@@ -1,18 +1,19 @@
 function insert_dom(list_finished_question){
+    hidden_geme();
     var cards = make_cards(list_finished_question);
     var content = waku();
     content = content.replace("$$cards", cards);
     content = add_top_button(content);
-    document.getElementById("main").innerHTML = content;
+    document.getElementById("other").innerHTML = content;
 }
 
 function add_top_button(content){
     var url = (IS_LOCAL) ? 'local_index.html' : 'index.html'
 
     content += '<center>';
-    content += '<a href="' + url + '">';
+    content += '<div class="present_button" onclick="return_game()">';
     content += '<img src="src/asset/button_top01.png">';
-    content += '</a></center>';
+    content += '</div></center>';
     return content;
 }
 

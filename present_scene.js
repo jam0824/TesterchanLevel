@@ -1,8 +1,8 @@
 function insert_present_dom(url_16, url_19){
+    hidden_geme();
     var dom = get_present_dom(url_16, url_19);
-    document.getElementById("main").innerHTML = dom;
+    document.getElementById("other").innerHTML = dom;
 }
-
 
 
 
@@ -31,10 +31,8 @@ function get_present_dom(url_16, url_19){
         '<img src="' + url_19 + '">'+
         '</a>'+
         '</div>'+
-        '<div class="present_button">'+
-        '<a href="index.html">'+
+        '<div class="present_button" onclick="return_game()">'+
         '<img src="./src/asset/button_top01.png">'+
-        '</a>'+
         '</div>'+
         '</div>';
     return str;

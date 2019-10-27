@@ -5,9 +5,9 @@ var IS_LOCAL = false;
 var IS_OTHER_QUIZ = false;
 
 //出題問題数
-var FINISH_QUESTION_NUMBER = 20;
+var FINISH_QUESTION_NUMBER = 2;
 //合格問題数
-var CLEAR_QUESTION_NUMBER = 14;
+var CLEAR_QUESTION_NUMBER = 1;
 
 var VERSION = "1.0.2.0";
 var QUIZ_NAME = "ソフトウェアテスト知識試験テスターちゃんレベル";
