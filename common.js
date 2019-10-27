@@ -136,15 +136,8 @@ function stop_bgm(){
 function make_sound_button(obj, x, y){
     if(IS_LOCAL) return null;
 
-    var sprite;
-    if(is_sound){
-        sprite = Sprite('sound_button01').addChildTo(obj);
-    }
-    else{
-        sprite = Sprite('sound_button02').addChildTo(obj);
-    }
-    sprite.x = x;
-    sprite.y = y;
+    var sprite_name = (is_sound) ? 'sound_button01' : 'sound_button02';
+    var sprite = make_sprite(obj, sprite_name, x, y);
     sprite.setInteractive(true);
     sprite.onpointend = function(e){
         make_hit(obj, Number(e.pointer.x), Number(e.pointer.y));
@@ -159,7 +152,8 @@ function make_sound_button(obj, x, y){
             play_se('story_msg');
             sprite.setImage('sound_button01');
             play_bgm(sound_path);
-        }    
+        }
+        show_info_log();    
     };
     return sprite;
 }

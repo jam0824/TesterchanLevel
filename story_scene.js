@@ -38,9 +38,7 @@ function show_story_window(obj){
 }
 
 function make_story_window(obj, grid_y){
-    var window = Sprite('story_window').addChildTo(obj);
-    window.x = obj.gridX.center();
-    window.y = obj.gridY.center(grid_y);
+    var window = make_sprite(obj, 'story_window', obj.gridX.center(), obj.gridY.center(grid_y));
     window.setInteractive(true);
     window.onpointend = function(e){
         play_se('story_msg');
@@ -63,7 +61,6 @@ function next_messege(obj, num){
 }
 
 function make_story_label(obj, x, y, text){
-    
     var label = make_label(obj, text_converter(text), 22, x, y,'#5a4e46');
     label.lineHeight = 1.5;
     return label;
@@ -90,9 +87,7 @@ function make_charactor(obj, sprite_name, x, y, alpha){
 
 
 function make_skip_button(obj, x, y){
-    var button = Sprite('skip_button01').addChildTo(obj);
-    button.x = x;
-    button.y = y;
+    var button = make_sprite(obj, 'skip_button01', x, y);
     button.setInteractive(true);
     button.onpointend = function(e){
         play_se('opening_decision');

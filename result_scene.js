@@ -108,9 +108,7 @@ function reserve_string(str) {
 }
 
 function make_next_button(obj, x, y){
-    var button = Sprite('next_button01').addChildTo(obj);
-    button.x = x;
-    button.y = y;
+    var button = make_sprite(obj, 'next_button01', x, y);
     button.setInteractive(true);
     button.onpointend = function(e){
         play_se('opening_decision');

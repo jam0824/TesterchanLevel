@@ -74,9 +74,7 @@ function init_global_value(){
   
   //問題表示画面作成
   function make_question_window(obj, group, y, text){
-    var question_window = Sprite('question_window').addChildTo(group);
-    question_window.x = obj.gridX.center();
-    question_window.y = y;
+    var question_window = make_sprite(group, 'question_window', obj.gridX.center(), y);
     var label = make_label(group, text, 20, LABEL_X, y,'#5a4e46');
   }
   
@@ -97,9 +95,7 @@ function init_global_value(){
   //回答ボタン（１つ）作成
   function make_select(obj, group, index, text, origin_question, is_correct){
     y = index * 210 + 540;
-    var select = Sprite('select').addChildTo(group);
-    select.x = obj.gridX.center();
-    select.y = y
+    var select = make_sprite(group, 'select', obj.gridX.center(), y);
     select.setInteractive(true);
     select.onpointend = function(e){
       if(is_tap_ok){

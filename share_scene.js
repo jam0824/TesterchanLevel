@@ -40,9 +40,7 @@ function show_share_screen(obj){
 }
 
 function make_twitter_icon(obj, x, y, text){
-    var button = Sprite('twitter_icon').addChildTo(obj);
-    button.x = x;
-    button.y = y;
+    var button = make_sprite(obj, 'twitter_icon', x, y);
     button.setInteractive(true);
     button.onpointend = function(e){
         make_hit(obj, Number(e.pointer.x), Number(e.pointer.y));
@@ -55,9 +53,7 @@ function make_twitter_icon(obj, x, y, text){
 
 
 function make_top_button(obj, x, y){
-    var button = Sprite('top_button01').addChildTo(obj);
-    button.x = x;
-    button.y = y;
+    var button = make_sprite(obj, 'top_button01', x, y);
     button.setInteractive(true);
     button.onpointend = function(e){
         button.setImage('top_button02');
@@ -73,9 +69,7 @@ function share_twitter(text){
 }
 
 function make_check_button(obj, x, y){
-    var button = Sprite('check_button01').addChildTo(obj);
-    button.x = x;
-    button.y = y;
+    var button = make_sprite(obj, 'check_button01', x, y);
     button.setInteractive(true);
     button.onpointend = function(e){
         insert_dom(list_finished_question);
@@ -84,9 +78,7 @@ function make_check_button(obj, x, y){
 }
 
 function make_present_button(obj, x, y){
-    var button = Sprite('present_button01').addChildTo(obj);
-    button.x = x;
-    button.y = y;
+    var button = make_sprite(obj, 'present_button01', x, y);
     button.setInteractive(true);
     button.onpointend = function(e){
         insert_present_dom(url_16, url_19);

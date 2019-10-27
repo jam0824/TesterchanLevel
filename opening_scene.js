@@ -19,9 +19,7 @@ phina.define('Opening', {
 
 
 function make_opening_button(obj, grid_y){
-    var select = Sprite('opening_button01').addChildTo(obj);
-    select.x = obj.gridX.center();
-    select.y = obj.gridY.center(grid_y);
+    var select = make_sprite(obj, 'opening_button01',obj.gridX.center(), obj.gridY.center(grid_y));
     select.setInteractive(true);
     select.onpointend = function(e){
         play_se('opening_decision');

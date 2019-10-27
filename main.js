@@ -10,8 +10,9 @@ phina.main(function() {
   if(!IS_LOCAL){
     ASSETS.sound = SOUND_ASSETS;
   }
-  console.log(ASSETS);
-  console.log('VERSION ' + VERSION);
+
+  show_info_log();
+
   var app = GameApp({
     query: '#game',
     startLabel: 'opening', // メインシーンから開始する
@@ -57,3 +58,11 @@ phina.main(function() {
   });
   app.run();
 });
+
+function show_info_log(){
+  console.log(ASSETS);
+  console.log('VERSION ' + VERSION);
+  console.log('IS_LOCAL = ' + IS_LOCAL);
+  console.log('IS_OTHER_QUIZ = ' + IS_OTHER_QUIZ);
+  console.log('IS_SOUND = ' + is_sound);
+}
